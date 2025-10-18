@@ -567,8 +567,8 @@ body {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
     position: relative;
     z-index: 2;
     margin-top: 60px;
@@ -589,6 +589,9 @@ body {
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .premium-card::before {
@@ -663,6 +666,8 @@ body {
     position: relative;
 }
 
+
+
 .crushbrito-bg::after {
     content: '';
     position: absolute;
@@ -672,6 +677,22 @@ body {
     bottom: 0;
     background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
 }
+
+.robot-bg {
+    background: linear-gradient(135deg, #cd7100 0%, #000000 50%, #cd7100 100%);
+    position: relative;
+}
+.robot-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+}
+
+
 
 .pizzamama-bg {
     background: linear-gradient(135deg, #b44c0f 0%, #713303 50%, #c88d04 100%);
@@ -808,6 +829,10 @@ body {
         rgba(15, 23, 42, 0.95) 0%, 
         rgba(30, 41, 59, 0.98) 100%);
     position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .project-header {
@@ -1083,6 +1108,26 @@ body {
     color: rgba(255, 255, 255, 0.5);
 }
 
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 50px;
+    }
+    
+    .premium-card {
+        max-width: 100%;
+    }
+    
+    .project-image {
+        height: 180px;
+    }
+    
+    .project-icon {
+        font-size: 2.8rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
@@ -1206,6 +1251,71 @@ body {
     }
 }
 
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 30px;
+    }
+    
+    .premium-card {
+        border-radius: 12px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .project-image {
+        height: 150px;
+    }
+    
+    .project-icon {
+        font-size: 2.2rem;
+    }
+    
+    .project-content {
+        padding: 18px;
+    }
+    
+    .project-title {
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+    }
+    
+    .project-description {
+        font-size: 0.85rem;
+        margin-bottom: 14px;
+        line-height: 1.5;
+    }
+    
+    .project-tech {
+        gap: 5px;
+        margin-bottom: 14px;
+    }
+    
+    .tech-tag {
+        padding: 4px 9px;
+        font-size: 0.72rem;
+    }
+    
+    .project-link {
+        width: 34px;
+        height: 34px;
+    }
+    
+    .project-link i {
+        font-size: 0.85rem;
+    }
+    
+    .project-status {
+        font-size: 0.85rem;
+    }
+    
+    .project-status .status-dot {
+        width: 7px;
+        height: 7px;
+    }
+}
+
 @media (max-width: 480px) {
     .hero-buttons {
         flex-direction: column;
@@ -1306,6 +1416,82 @@ body {
     
     .container {
         padding: 0 12px;
+    }
+}
+
+@media (max-width: 375px) {
+    .projects-grid {
+        gap: 10px;
+        margin-top: 24px;
+    }
+    
+    .premium-card {
+        border-radius: 8px;
+    }
+    
+    .project-image {
+        height: 120px;
+    }
+    
+    .project-icon {
+        font-size: 1.8rem;
+    }
+    
+    .project-content {
+        padding: 14px;
+    }
+    
+    .project-title {
+        font-size: 1.05rem;
+        margin-bottom: 6px;
+    }
+    
+    .project-description {
+        font-size: 0.78rem;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+    
+    .project-tech {
+        gap: 3px;
+        margin-bottom: 12px;
+    }
+    
+    .tech-tag {
+        padding: 3px 7px;
+        font-size: 0.68rem;
+    }
+    
+    .project-link {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .project-link i {
+        font-size: 0.75rem;
+    }
+    
+    .project-status {
+        font-size: 0.78rem;
+    }
+    
+    .project-status .status-dot {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .about-section,
+    .projects-section,
+    .contact-section {
+        padding: 50px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 30px;
     }
 }
 
