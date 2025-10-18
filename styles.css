@@ -658,7 +658,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 80% 20%, rgba(198, 21, 21, 0.566) 0%, transparent 50%);
 }
 
 .crushbrito-bg {
@@ -675,7 +675,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+    background: radial-gradient(circle at 60% 40%, rgba(79, 0, 68, 0.674) 0%, transparent 50%);
 }
 
 .robot-bg {
@@ -689,13 +689,13 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+    background: radial-gradient(circle at 10% 10%, rgba(1, 3, 101, 0.544) 0%, transparent 50%);
 }
 
 
 
 .pizzamama-bg {
-    background: linear-gradient(135deg, #b44c0f 0%, #713303 50%, #c88d04 100%);
+    background: linear-gradient(135deg, #365748 0%, #c60c0c 50%, #e90e78 100%);
     position: relative;
 }
 
@@ -706,10 +706,10 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    background: radial-gradient(circle at 70% 30%, rgba(0, 124, 196, 0.433) 0%, transparent 50%);
 }
 .nexter-bg {
-    background: linear-gradient(135deg, #ff8c2d 0%, #6c330f 50%, #020254 100%);
+    background: linear-gradient(135deg, #3eff2d 0%, #120f6c 50%, #aba00b 100%);
     position: relative;
 }
 
@@ -720,7 +720,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 60% 40%, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
+    background: radial-gradient(circle at 60% 40%, rgba(15, 166, 58, 0.652) 0%, transparent 50%);
 }
 
 .trillo-bg {
@@ -735,7 +735,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 40% 60%, rgba(255, 165, 0, 0.3) 0%, transparent 50%);
+    background: radial-gradient(circle at 0% 20%, rgba(7, 3, 236, 0.599) 0%, transparent 50%);
 }
 
 .icecream-bg {
@@ -750,7 +750,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    background: radial-gradient(circle at 50% 0%, rgba(195, 6, 6, 0.589) 0%, transparent 50%);
 }
 
 .project-icon {
