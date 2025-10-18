@@ -1,0 +1,26 @@
+# Robots.txt pour Hugo Meuriel - Portfolio
+# https://hugomeuriel.fr
+
+User-agent: *
+Allow: /
+
+# Fichiers et dossiers à indexer
+Allow: /index.html
+Allow: /styles.css
+Allow: /script.js
+Allow: /favicon.svg
+Allow: /favicon.ico
+
+# Fichiers à ne pas indexer
+Disallow: /sitemap.xml
+Disallow: /robots.txt
+
+# Délai entre les requêtes (en secondes)
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://hugomeuriel.fr/sitemap.xml
+
+# Informations sur le site
+# Site: Hugo Meuriel - Portfolio
+# Contact: hugomeuriel@gmail.fr
