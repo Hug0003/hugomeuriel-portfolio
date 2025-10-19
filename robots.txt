@@ -2,25 +2,17 @@
 # https://hugomeuriel.fr
 
 User-agent: *
+# Par défaut, tout est autorisé à l'indexation.
+# Si vous aviez des sections spécifiques (ex: /admin/, /private/), vous les disallow ici.
 Allow: /
 
-# Fichiers et dossiers à indexer
-Allow: /index.html
-Allow: /styles.css
-Allow: /script.js
-Allow: /favicon.svg
-Allow: /favicon.ico
+# Exemple si vous vouliez empêcher l'indexation d'un dossier d'images temporaires
+# Disallow: /temp-images/
 
-# Fichiers à ne pas indexer
-Disallow: /sitemap.xml
-Disallow: /robots.txt
-
-# Délai entre les requêtes (en secondes)
-Crawl-delay: 1
-
-# Sitemap
+# Sitemap - Très important pour indiquer aux moteurs de recherche l'emplacement de votre sitemap.
+# Ne JAMAIS disallow le sitemap.xml lui-même.
 Sitemap: https://hugomeuriel.fr/sitemap.xml
 
-# Informations sur le site
+# Informations sur le site (commentaires ignorés par les robots)
 # Site: Hugo Meuriel - Portfolio
 # Contact: hugomeuriel@gmail.fr
