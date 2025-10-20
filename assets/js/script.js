@@ -45,8 +45,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    //arrow down click
-
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Scroll vers la section À propos
+            const aboutSection = document.querySelector('#apropos');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+        
+        // Ajouter le style cursor pointer pour indiquer que c'est cliquable
+        scrollIndicator.style.cursor = 'pointer';
+    } 
 
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
