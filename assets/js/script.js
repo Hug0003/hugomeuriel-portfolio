@@ -28,22 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     animateTrail();
 
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
+    // Smooth scrolling for navigation links (handled by components.js)
+    // This is now managed by the component loader to avoid conflicts
 
     const scrollIndicator = document.querySelector('.scroll-indicator');
     if (scrollIndicator) {
@@ -83,44 +69,11 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollY = currentScrollY;
     });
 
-    // Mobile menu toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    // Mobile menu toggle (handled by components.js)
+    // This is now managed by the component loader to avoid conflicts
 
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-
-    // Project cards interaction
-    const projectCards = document.querySelectorAll('.project-card');
-
-    projectCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const url = this.getAttribute('data-url');
-            if (url) {
-                window.open(url, '_blank');
-            }
-        });
-
-        card.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                const url = this.getAttribute('data-url');
-                if (url) {
-                    window.open(url, '_blank');
-                }
-            }
-        });
-
-        // Add hover effects
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
+    // Project cards interaction (handled by components.js)
+    // This is now managed by the component loader to avoid conflicts
 
 
     // Intersection Observer for animations
