@@ -159,9 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const titleName = document.querySelector('.title-name');
     if (titleName) {
         const text = titleName.textContent;
-        titleName.textContent = 'H'; // Affiche le H dès le début
+        titleName.textContent = text.charAt(0); // Affiche la première lettre dès le début
         
-        let i = 1; // Commence à partir de la 2ème lettre (ugo Meuriel)
+        let i = 1; // Commence à partir de la 2ème lettre
         const typeWriter = () => {
             if (i < text.length) {
                 titleName.textContent += text.charAt(i);

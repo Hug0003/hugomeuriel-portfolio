@@ -42,6 +42,10 @@ body {
     overflow-x: hidden;
 }
 
+.hidden{
+    display: none;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -659,6 +663,22 @@ body {
     background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
 }
 
+
+.deva2-bg {
+    background: linear-gradient(135deg, #0008ff 0%, #69b4ff 50%, #04172a 100%);
+    position: relative;
+}
+
+.deva2-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 60%, rgba(70, 0, 83, 0.388) 0%, transparent 50%);
+}
+
 .natours-bg {
     background: linear-gradient(135deg, #064a31 0%, #614601 50%, #052555 100%);
     position: relative;
@@ -779,6 +799,21 @@ body {
     right: 0;
     bottom: 0;
     background: radial-gradient(circle at 60% 40%, rgba(79, 0, 68, 0.674) 0%, transparent 50%);
+}
+
+.money-manager-bg {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #ffffff 100%);
+    position: relative;
+}
+
+.money-manager-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 60% 40%, rgba(249, 115, 22, 0.3) 0%, transparent 50%);
 }
 
 .project-icon {
@@ -1681,3 +1716,27 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ===== GLOBAL LINK STYLES ===== */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Désactiver le cursor trail sur les appareils mobiles */
+@media (max-width: 768px) {
+    .cursor-trail {
+        display: none !important;
+    }
+}
+
+/* Désactiver le cursor trail sur les appareils tactiles */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-trail {
+        display: none !important;
+    }
+}
+

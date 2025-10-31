@@ -27,7 +27,16 @@ class ComponentLoader {
     }
 
     async loadHeader() {
-        const headerHtml = await this.loadComponent('assets/components/header.html');
+        // Determine which header to load based on the current page
+        const isProjectPage = window.location.pathname.includes('alarm.html') || 
+                             window.location.pathname.includes('project') ||
+                             window.location.pathname.includes('.html') && !window.location.pathname.includes('index.html');
+        
+        const headerPath = isProjectPage ? 
+            'assets/components/header-project.html' : 
+            'assets/components/header.html';
+            
+        const headerHtml = await this.loadComponent(headerPath);
         const headerElement = document.querySelector('#header-placeholder');
         if (headerElement) {
             headerElement.innerHTML = headerHtml;
@@ -72,19 +81,37 @@ function reinitializeScripts() {
         });
     }
 
-    // Re-initialize smooth scrolling for navigation links
+    // Re-initialize navigation links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
+            const href = this.getAttribute('href');
             
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            // If the link points to a different page, let it navigate normally
+            if (href.includes('index.html') && !window.location.pathname.includes('index.html')) {
+                return; // Allow normal navigation to index.html
+            }
+            
+            // If it's an anchor link on the same page, handle smooth scrolling
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(href);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            } else if (href.includes('#')) {
+                // Handle links like "index.html#section"
+                e.preventDefault();
+                const [page, anchor] = href.split('#');
+                
+                if (page === 'index.html' || page === '') {
+                    // Navigate to index.html with anchor
+                    window.location.href = href;
+                }
             }
         });
     });

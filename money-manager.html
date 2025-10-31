@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alarme Connectée - Hugo Meuriel | Projet IoT</title>
+    <title>Money Manager - Hugo Meuriel | Application C# WPF</title>
     
     <!-- Meta Description -->
-    <meta name="description" content="Projet d'alarme connectée développé par Hugo Meuriel utilisant Arduino, Raspberry Pi et ESP32 avec impression 3D et technologies IoT.">
+    <meta name="description" content="Application de gestion d'argent développée par Hugo Meuriel en C# WPF avec authentification, base de données MySQL et interface moderne.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
     
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/alarm.css">
+    <link rel="stylesheet" href="assets/css/money-manager.css">
     <script defer src="assets/js/components.js"></script>
     <script defer src="assets/js/script.js"></script>
 
@@ -40,16 +40,16 @@
                         <span>Portfolio</span>
                     </a>
                     <i class="fas fa-chevron-right"></i>
-                    <span class="breadcrumb-current">Alarme Connectée</span>
+                    <span class="breadcrumb-current">Money Manager</span>
                 </div>
                 <h1 class="hero-title">
-                    <span class="title-line">Projet IoT</span>
-                    <span class="title-name">Alarme Connectée</span>
-                    <span class="title-role">Système de Sécurité Intelligent</span>
+                    <span class="title-line">Application Desktop</span>
+                    <span class="title-name">Money Manager</span>
+                    <span class="title-role">Gestionnaire Financier Personnel</span>
                 </h1>
                 <p class="hero-description">
-                    Développement d'un système d'alarme connectée complet utilisant Arduino, Raspberry Pi et ESP32. 
-                    Intégration de capteurs multiples, interface web moderne et notifications temps réel via Telegram.
+                    Application de gestion d'argent développée en C# WPF avec authentification sécurisée, 
+                    base de données MySQL et interface utilisateur moderne pour un contrôle total des finances personnelles.
                 </p>
                 <div class="hero-buttons">
                     <a href="#details" class="btn btn-primary">
@@ -64,7 +64,10 @@
             <div class="project-preview">
                 <div class="preview-device">
                     <div class="device-screen">
-                        <img src="assets/images/Alarme/boite_ferme.jpg" alt="Alarme Connectée">
+                        <div class="device-content">
+                            <i class="fas fa-wallet"></i>
+                            <span>GESTION FINANCIÈRE</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,27 +86,27 @@
                     <div class="overview-text">
                         <h3>Contexte du Projet</h3>
                         <p>
-                            Ce projet d'alarme connectée a été développé dans le cadre de mon projet d'étude. 
-                            L'objectif était de créer un système de sécurité complet et modulaire, capable de 
-                            surveiller un espace en temps réel et d'alerter l'utilisateur via Telegram, afin de me former sur l'IoT et le réseau.
+                            Money Manager est une application desktop complète développée pour la gestion personnelle des finances. 
+                            L'objectif était de créer un outil intuitif permettant aux utilisateurs de suivre leurs revenus, 
+                            dépenses et épargnes avec une interface moderne et sécurisée.
                         </p>
                         <p>
-                            Le système combine plusieurs technologies : Une arduino Uno pour l'unité centrale, 
-                            Raspberry Pi pour la photo, et une ESP32 pour la détection de mouvement.
+                            L'application utilise WPF (Windows Presentation Foundation) pour une interface utilisateur riche 
+                            et une architecture MVVM pour une séparation claire entre la logique métier et l'interface.
                         </p>
                     </div>
                     <div class="overview-stats">
                         <div class="stat-item">
-                            <div class="stat-number">3</div>
-                            <div class="stat-label">Micro-contrôleurs</div>
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Fonctionnalités</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">10</div>
-                            <div class="stat-label">Modules</div>
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Sécurisé</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Heures de travail</div>
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Disponible</div>
                         </div>
                     </div>
                 </div>
@@ -113,42 +116,43 @@
                 <div class="specs-grid">
                     <div class="spec-card">
                         <div class="spec-icon">
-                            <i class="fas fa-microchip"></i>
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3>Arduino Uno</h3>
-                        <p>Gestion des capteurs de mouvement (Infrarouge) et Hub central</p>
+                        <h3>Système d'Authentification</h3>
+                        <p>Gestion sécurisée des utilisateurs avec chiffrement des mots de passe</p>
                         <ul>
-                            <li>Capteur Infrarouge (mouvement)</li>
-                            <li>Activation alarm (code / carte RFID)</li>
-                            <li>Ecran + leds (Etat de l'alarme)</li>
-                            <li>Déclenchement de l'alarme (buzzer)</li>
-                            <li>Envoie les données sur Telegram</li>
-                            <li>Serveur web (Interface de gestion)</li>
+                            <li>Login/Signup sécurisé</li>
+                            <li>Récupération de mot de passe</li>
+                            <li>Chiffrement AES-256</li>
+                            <li>Sessions utilisateur</li>
                         </ul>
                     </div>
                     
                     <div class="spec-card">
                         <div class="spec-icon">
-                            <i class="fas fa-camera"></i>
+                            <i class="fas fa-database"></i>
                         </div>
-                        <h3>Raspberry Pi 3</h3>
-                        <p>Photographie si mouvement détecté</p>
+                        <h3>Base de Données MySQL</h3>
+                        <p>Architecture robuste pour la persistance des données</p>
                         <ul>
-                            <li>Photographie si alarme se déclenche</li>
-                            <li>Connecté au serveur web</li>
+                            <li>Tables normalisées</li>
+                            <li>Relations FK</li>
+                            <li>Requêtes optimisées</li>
+                            <li>Backup automatique</li>
                         </ul>
                     </div>
                     
                     <div class="spec-card">
                         <div class="spec-icon">
-                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-chart-pie"></i>
                         </div>
-                        <h3>ESP32</h3>
-                        <p>Détection de mouvement (ultrason)</p>
+                        <h3>Interface WPF</h3>
+                        <p>Expérience utilisateur moderne et intuitive</p>
                         <ul>
-                            <li>Capteur ultrason (mouvement)</li>
-                            <li>Connecté au serveur web</li>
-                            <li>Permet le déclenchement de l'alarme</li>
+                            <li>Design Material</li>
+                            <li>Animations fluides</li>
+                            <li>Responsive layout</li>
+                            <li>Thèmes personnalisables</li>
                         </ul>
                     </div>
                 </div>
@@ -165,56 +169,56 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Fonctionnalités Clés</h2>
-                <p class="section-subtitle">Un système complet et intelligent</p>
+                <p class="section-subtitle">Un système complet de gestion financière</p>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-user-lock"></i>
                     </div>
-                    <h3>Surveillance Continue</h3>
-                    <p>Détection en temps réel des mouvements et intrusions avec analyse comportementale avancée.</p>
+                    <h3>Authentification Sécurisée</h3>
+                    <p>Système de connexion robuste avec récupération de mot de passe et chiffrement des données sensibles.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h3>Gestion des Transactions</h3>
+                    <p>Ajout, modification et suppression des revenus et dépenses avec catégorisation automatique.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Tableaux de Bord</h3>
+                    <p>Visualisation des finances avec graphiques interactifs et statistiques détaillées.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Planification Budgétaire</h3>
+                    <p>Création de budgets mensuels avec alertes et suivi des objectifs d'épargne.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3>Rapports & Export</h3>
+                    <p>Génération de rapports PDF et export des données en format Excel pour analyse externe.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Interface Mobile</h3>
-                    <p>Application web responsive permettant le contrôle de l'état de l'alarme</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <h3>Alertes Multiples</h3>
-                    <p>Notifications instantanées via Telegram pour alerter l'utilisateur, en recevant des données comme, une photo, si l'alarme s'est déclenchée ou si quelqu'un a tenté d'activer ou désactiver l'alarme</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Historique & Analytics</h3>
-                    <p>Base de données complète des événements avec statistiques et rapports détaillés (nombre d'alertes, nombre de tentatives d'activation ou de désactivation de l'alarme, etc.)</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Sécurité Renforcée</h3>
-                    <p>Chiffrement des communications et authentification (code / carte RFID) pour protéger le système. L'unité centrale est protégée physiquement par une boite imprimée en 3D.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                    <h3>Configuration Flexible</h3>
-                    <p>Installation rapide et simple, avec une configuration flexible pour les différents capteurs.</p>
+                    <h3>Interface Responsive</h3>
+                    <p>Design adaptatif qui s'ajuste parfaitement à différentes tailles d'écran et résolutions.</p>
                 </div>
             </div>
         </div>
@@ -231,10 +235,10 @@
                 <div class="challenge-item">
                     <div class="challenge-number">01</div>
                     <div class="challenge-content">
-                        <h3>Communication Inter-Modules</h3>
-                        <p>Le défi principal était de faire communiquer efficacement les différents micro-contrôleurs entre eux tout en maintenant une latence minimale.</p>
+                        <h3>Sécurité des Données</h3>
+                        <p>Le défi principal était d'implémenter un système de sécurité robuste pour protéger les données financières sensibles des utilisateurs.</p>
                         <div class="solution">
-                            <strong>Solution :</strong> Mise en place d'un serveur web (Flask) pour la communication entre les modules.
+                            <strong>Solution :</strong> Implémentation du chiffrement AES-256, hachage bcrypt pour les mots de passe et validation stricte des entrées utilisateur.
                         </div>
                     </div>
                 </div>
@@ -242,10 +246,10 @@
                 <div class="challenge-item">
                     <div class="challenge-number">02</div>
                     <div class="challenge-content">
-                        <h3>L'appareil photo</h3>
-                        <p>La configuration de l'appareil photo était complexe, en effet il fallait trouver les bons paramètres pour que la photo soit la plus nette possible. (angle, distance, luminosité, couleur.)</p>
+                        <h3>Performance de la Base de Données</h3>
+                        <p>Optimiser les requêtes MySQL pour gérer de grandes quantités de transactions sans impact sur les performances.</p>
                         <div class="solution">
-                            <strong>Solution :</strong> Utilisation de paramètres complexes pour la qualité de la photo et pour avoir le meilleur focus possible.
+                            <strong>Solution :</strong> Création d'index optimisés, utilisation de requêtes préparées et implémentation de la pagination pour les grandes listes.
                         </div>
                     </div>
                 </div>
@@ -253,11 +257,11 @@
                 <div class="challenge-item">
                     <div class="challenge-number">03</div>
                     <div class="challenge-content">
-                        <h3>Boite imprimée en 3D</h3>
-                        <p>La boite imprimée en 3D était complexe, car je n'avais pas d'expérience dans l'impression 3D</p>
+                        <h3>Architecture MVVM</h3>
+                        <p>Implémenter correctement le pattern MVVM pour maintenir une séparation claire entre la logique métier et l'interface utilisateur.</p>
                         <div class="solution">
-                            <strong>Solution :</strong> Utilisation de logiciels de modélisation 3D (Fusion 360) pour la création de la boite et pour l'impression 3D.
-                            </div>
+                            <strong>Solution :</strong> Utilisation de INotifyPropertyChanged, Command pattern et Data Binding bidirectionnel pour une architecture propre et maintenable.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -273,41 +277,48 @@
             
             <div class="tech-categories">
                 <div class="tech-category">
-                    <h3>Hardware</h3>
+                    <h3>Backend & Base de Données</h3>
                     <div class="tech-tags">
-                        <span class="tech-tag">Arduino Uno</span>
-                        <span class="tech-tag">Raspberry Pi 3</span>
-                        <span class="tech-tag">ESP32</span>
-                        <span class="tech-tag">Différents capteurs</span>
-                        <span class="tech-tag">Différents modules</span>
+                        <span class="tech-tag">C# .NET Framework</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Entity Framework</span>
+                        <span class="tech-tag">LINQ</span>
+                        <span class="tech-tag">ADO.NET</span>
+                        <span class="tech-tag">Stored Procedures</span>
                     </div>
                 </div>
                 
                 <div class="tech-category">
-                    <h3>Backend</h3>
+                    <h3>Interface Utilisateur</h3>
                     <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">GPIO</span>
-                        <span class="tech-tag">Telegram API</span>
+                        <span class="tech-tag">WPF</span>
+                        <span class="tech-tag">XAML</span>
+                        <span class="tech-tag">MVVM Pattern</span>
+                        <span class="tech-tag">Data Binding</span>
+                        <span class="tech-tag">Custom Controls</span>
+                        <span class="tech-tag">Material Design</span>
                     </div>
                 </div>
                 
                 <div class="tech-category">
-                    <h3>Frontend</h3>
+                    <h3>Sécurité & Authentification</h3>
                     <div class="tech-tags">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Responsive Design</span>
+                        <span class="tech-tag">AES-256 Encryption</span>
+                        <span class="tech-tag">bcrypt Hashing</span>
+                        <span class="tech-tag">JWT Tokens</span>
+                        <span class="tech-tag">Input Validation</span>
+                        <span class="tech-tag">SQL Injection Protection</span>
                     </div>
                 </div>
                 
                 <div class="tech-category">
-                    <h3>Réseau & IoT</h3>
+                    <h3>Outils & Développement</h3>
                     <div class="tech-tags">
-                        <span class="tech-tag">WiFi</span>
-                        <span class="tech-tag">WebSocket</span>
+                        <span class="tech-tag">Visual Studio</span>
+                        <span class="tech-tag">Git Version Control</span>
+                        <span class="tech-tag">Unit Testing</span>
+                        <span class="tech-tag">NUnit Framework</span>
+                        <span class="tech-tag">Logging (NLog)</span>
                     </div>
                 </div>
             </div>
@@ -318,31 +329,35 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Galerie du Projet</h2>
-                <p class="section-subtitle">Photos et captures d'écran du système</p>
+                <p class="section-subtitle">Captures d'écran de l'application</p>
             </div>
             
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="assets/images/Alarme/boite_ouverte.jpg" alt="Alarme Connectée">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Écran de connexion</span>
                     </div>
                 </div>
                 
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="assets/images/Alarme/photoCMD.png" alt="Alarme Connectée">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Tableau de bord principal</span>
                     </div>
                 </div>
                 
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="assets/images/Alarme/camera.jpg" alt="Alarme Connectée">
+                        <i class="fas fa-plus"></i>
+                        <span>Ajout de transaction</span>
                     </div>
                 </div>
                 
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="assets/images/Alarme/ultrason.jpg" alt="Alarme Connectée">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Graphiques financiers</span>
                     </div>
                 </div>
             </div>
