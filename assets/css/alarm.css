@@ -785,17 +785,26 @@
     }
     
     .hero-content {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         gap: 40px;
+        padding: 0 20px;
+    }
+    
+    .hero-text {
+        order: 1;
     }
     
     .project-preview {
-        order: -1;
+        order: 2;
+        display: flex;
+        justify-content: center;
     }
     
     .preview-device {
-        width: 250px;
-        height: 350px;
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        aspect-ratio: 420/380;
     }
     
     .overview-content {
@@ -858,6 +867,19 @@
         padding: 60px 0;
     }
     
+    .hero-content {
+        gap: 30px;
+        padding: 0 15px;
+    }
+    
+    .hero-text {
+        order: 1;
+    }
+    
+    .project-preview {
+        order: 2;
+    }
+    
     .project-details-section,
     .features-section,
     .challenges-section,
@@ -890,8 +912,10 @@
     }
     
     .preview-device {
-        width: 200px;
-        height: 280px;
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        aspect-ratio: 420/380;
         padding: 16px;
     }
     
