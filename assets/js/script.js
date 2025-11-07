@@ -365,6 +365,28 @@ document.addEventListener('DOMContentLoaded', function() {
   }
     
  
+document.addEventListener('loadAllComponents', function() {
+  const containerProjectsFooter = document.querySelector('.projects-footer');
+  fetch('data.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch projects');
+      }
+      return response.json();
+    })
+    .then(sites => {
+      sites.forEach(site => {
+        // Créer le HTML initial avec un placeholder pour status
+        containerProjectsFooter.insertAdjacentHTML(
+          'beforeend',
+          `
+                <a href="${site.url}" target="_blank">
+                    ${site.name}
+                </a>`
+            );
+        });
+    });
+});
 
 function checkSitesAccessibility(url) {
     document.addEventListener('DOMContentLoaded', function() {

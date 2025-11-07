@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Re-initialize scripts that depend on the loaded components
     reinitializeScripts();
+    document.dispatchEvent(new Event('loadAllComponents'));
 });
 
 // Function to reinitialize scripts after components are loaded
