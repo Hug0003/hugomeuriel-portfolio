@@ -271,73 +271,162 @@ document.addEventListener('DOMContentLoaded', function() {
   // Correction de l'affichage du statut des sites (asynchrone)
 
   const containerProjects = document.querySelector('.projects-grid');
-  fetch('data.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to fetch projects');
+  const filterSelect = document.querySelector('#projects-filter');
+  let projectsData = [];
+
+  const normalizeValue = (value = '') => value.toString().trim().toLowerCase();
+
+  const filterProjects = (criteria) => {
+    const normalizedCriteria = normalizeValue(criteria);
+    if (!normalizedCriteria || normalizedCriteria === 'all') {
+      return [...projectsData].sort((a, b) => a.originalIndex - b.originalIndex);
+    }
+
+    return projectsData
+      .filter(project => normalizeValue(project.category || project.type) === normalizedCriteria)
+      .sort((a, b) => a.originalIndex - b.originalIndex);
+  };
+
+  const attachProjectCardInteractions = (card) => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'link');
+
+    card.addEventListener('click', function () {
+      const url = this.getAttribute('data-url');
+      if (url) {
+        if (url.startsWith('http') || url.startsWith('https')) {
+          window.open(url, '_blank');
+        } else {
+          window.location.href = url;
+        }
       }
-      return response.json();
-    })
-    .then(sites => {
-      sites.forEach(site => {
-        // Créer le HTML initial avec un placeholder pour status
-        containerProjects.insertAdjacentHTML(
-          'beforeend',
-          `
-            <div class="project-card premium-card" data-url="${site.url}">
-              <div class="project-image" style="${site.color}">
-                <div class="project-icon">
-                  <i class="${site.icon}"></i>
-                </div>
-                <div class="project-overlay">
-                  <div class="overlay-content">
-                    <i class="fas fa-external-link-alt"></i>
-                    <span>${site.voir}</span>
-                  </div>
-                </div>
-                <div class="project-gradient"></div>
-              </div>
-              <div class="project-content">
-                <div class="project-header">
-                  <h3 class="project-title">${site.name}</h3>
-                  <div class="project-badge">${site.type}</div>
-                </div>
-                <p class="project-description">
-                  ${site.description}
-                </p>
-                <div class="project-tech">
-                  ${site.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                </div>
-                <div class="project-footer">
-                  <div class="project-status">
-                    <span>Vérification...</span>
-                  </div>
-                  <div class="project-link">
-                    <i class="fas fa-arrow-right"></i>
-                  </div>
-                </div>
-              </div>
-            </div>`
-        );
-        const inserted = containerProjects.lastElementChild;
-        if (inserted) {
-          inserted.classList.add('animate-in');
-          // Mise à jour du status en asynchrone
-          const statusContainer = inserted.querySelector('.project-status');
-          if (statusContainer) {
-            verifierSite(site.url)
-              .then(html => {
-                statusContainer.innerHTML = html;
-              })
-              .catch(() => {
-                statusContainer.innerHTML =
-                  `<span class="status-dot_offline"></span>
-                   <span>Hors ligne</span>`;
-              });
+    });
+
+    card.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const url = this.getAttribute('data-url');
+        if (url) {
+          if (url.startsWith('http') || url.startsWith('https')) {
+            window.open(url, '_blank');
+          } else {
+            window.location.href = url;
           }
         }
-      });
+      }
     });
+
+    card.addEventListener('mouseenter', function () {
+      this.style.transform = 'translateY(-8px) scale(1.02)';
+    });
+
+    card.addEventListener('mouseleave', function () {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
+  };
+
+  const renderProjects = (list) => {
+    if (!containerProjects) return;
+    containerProjects.innerHTML = '';
+
+    list.forEach(site => {
+      const technologiesHtml = Array.isArray(site.technologies)
+        ? site.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')
+        : '';
+
+      containerProjects.insertAdjacentHTML(
+        'beforeend',
+        `
+          <div class="project-card premium-card" data-url="${site.url}">
+            <div class="project-image" style="${site.color}">
+              <div class="project-icon">
+                <i class="${site.icon}"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="overlay-content">
+                  <i class="fas fa-external-link-alt"></i>
+                  <span>${site.voir}</span>
+                </div>
+              </div>
+              <div class="project-gradient"></div>
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">${site.name}</h3>
+                <div class="project-badge">${site.type}</div>
+              </div>
+              <p class="project-description">
+                ${site.description}
+              </p>
+              <div class="project-tech">
+                ${technologiesHtml}
+              </div>
+              <div class="project-footer">
+                <div class="project-status">
+                  <span>Vérification...</span>
+                </div>
+                <div class="project-link">
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>`
+      );
+
+      const inserted = containerProjects.lastElementChild;
+      if (inserted) {
+        inserted.classList.add('animate-in');
+        attachProjectCardInteractions(inserted);
+
+        const statusContainer = inserted.querySelector('.project-status');
+        if (statusContainer) {
+          verifierSite(site.url)
+            .then(html => {
+              statusContainer.innerHTML = html;
+            })
+            .catch(() => {
+              statusContainer.innerHTML =
+                `<span class="status-dot_offline"></span>
+                 <span>Hors ligne</span>`;
+            });
+        }
+      }
+    });
+
+    if (list.length > 0 && list.length <= 2) {
+      containerProjects.classList.add('projects-grid--compact');
+    } else {
+      containerProjects.classList.remove('projects-grid--compact');
+    }
+  };
+
+  if (containerProjects) {
+    fetch('data.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch projects');
+        }
+        return response.json();
+      })
+      .then(sites => {
+        projectsData = sites.map((site, index) => ({
+          ...site,
+          originalIndex: index,
+          category: site.category || site.type || 'autre'
+        }));
+
+        renderProjects(projectsData.sort((a, b) => a.originalIndex - b.originalIndex));
+
+        if (filterSelect) {
+          filterSelect.addEventListener('change', (event) => {
+            const filteredProjects = filterProjects(event.target.value);
+            renderProjects(filteredProjects);
+          });
+        }
+      })
+      .catch(error => {
+        console.error('Erreur lors du chargement des projets :', error);
+      });
+  }
 
   async function verifierSite(url) {
     try {
