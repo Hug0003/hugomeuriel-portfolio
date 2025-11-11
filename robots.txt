@@ -1,18 +1,14 @@
-# Robots.txt pour Hugo Meuriel - Portfolio
-# https://hugomeuriel.fr
 
 User-agent: *
-# Par défaut, tout est autorisé à l'indexation.
-# Si vous aviez des sections spécifiques (ex: /admin/, /private/), vous les disallow ici.
 Allow: /
 
-# Exemple si vous vouliez empêcher l'indexation d'un dossier d'images temporaires
-# Disallow: /temp-images/
+Disallow: /stats
+Disallow: /assets
+Disallow: /data.json
+Disallow: /image_to_webp.py
 
-# Sitemap - Très important pour indiquer aux moteurs de recherche l'emplacement de votre sitemap.
-# Ne JAMAIS disallow le sitemap.xml lui-même.
+
+
 Sitemap: https://hugomeuriel.fr/sitemap.xml
 
-# Informations sur le site (commentaires ignorés par les robots)
-# Site: Hugo Meuriel - Portfolio
-# Contact: hugomeuriel@gmail.fr
+
