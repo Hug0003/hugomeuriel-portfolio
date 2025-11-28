@@ -31,7 +31,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; - Removed for Lenis */
 }
 
 body {
@@ -54,16 +54,16 @@ body {
 
 .cursor-trail {
     position: fixed;
-    width: 16px;
-    height: 16px;
-    background: var(--gradient-primary);
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.8) 0%, rgba(139, 92, 246, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.3s ease, transform 0.1s linear;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+    mix-blend-mode: screen;
 }
 
 .navbar {
@@ -161,8 +161,9 @@ body {
 .gradient-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
+    filter: blur(100px);
+    opacity: 0.5;
+    animation: float-orb 20s infinite ease-in-out;
 }
 
 .orb-1 {
@@ -187,6 +188,14 @@ body {
     background: linear-gradient(135deg, #f59e0b, #ef4444);
     bottom: 20%;
     left: 60%;
+    animation-delay: -5s;
+}
+
+@keyframes float-orb {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
 }
 
 
