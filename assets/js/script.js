@@ -282,14 +282,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Plausible Outbound Link Tracking
     document.addEventListener('click', function(e) {
+        let url = null;
+        
+        // 1. Check for <a> tags
         const link = e.target.closest('a');
         if (link && link.href) {
-            const url = new URL(link.href);
-            if (url.hostname !== window.location.hostname) {
-                // It's an external link
-                if (window.plausible) {
-                    window.plausible('Outbound Link', { props: { url: link.href } });
+            url = link.href;
+        } 
+        // 2. Check for project cards (divs acting as links)
+        else {
+            const card = e.target.closest('.project-card');
+            if (card && card.getAttribute('data-url')) {
+                url = card.getAttribute('data-url');
+            }
+        }
+
+        if (url) {
+            try {
+                // Construct URL object (handles relative URLs by using current origin as base)
+                const urlObj = new URL(url, window.location.origin);
+                
+                // Check if hostname is different
+                if (urlObj.hostname !== window.location.hostname) {
+                    console.log('🌍 Outbound link detected:', url); 
+                    
+                    if (window.plausible) {
+                        window.plausible('Outbound Link', { props: { url: url } });
+                        console.log('✅ Event sent to Plausible');
+                    } else {
+                        console.warn('⚠️ Plausible object not found on window');
+                    }
                 }
+            } catch (err) {
+                console.error('Error processing URL:', err);
             }
         }
     });
