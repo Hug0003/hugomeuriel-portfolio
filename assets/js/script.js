@@ -280,6 +280,20 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(link);
     });
 
+    // Plausible Outbound Link Tracking
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (link && link.href) {
+            const url = new URL(link.href);
+            if (url.hostname !== window.location.hostname) {
+                // It's an external link
+                if (window.plausible) {
+                    window.plausible('Outbound Link', { props: { url: link.href } });
+                }
+            }
+        }
+    });
+
 });
 
 
