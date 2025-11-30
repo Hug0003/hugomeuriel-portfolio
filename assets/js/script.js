@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     // Observe elements for animation
-    const animateElements = document.querySelectorAll('.section-header, .about-card, .skill-item, .stat-card, .project-card, .contact-card');
+    const animateElements = document.querySelectorAll('.section-header, .about-card, .skill-item, .stat-card, .project-card, .contact-card, .timeline-item');
     animateElements.forEach(el => {
         observer.observe(el);
     });
@@ -108,7 +108,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .skill-item,
         .stat-card,
         .project-card,
-        .contact-card {
+        .contact-card,
+        .timeline-item {
             opacity: 0;
             transform: translateY(30px) scale(0.95);
             filter: blur(10px);

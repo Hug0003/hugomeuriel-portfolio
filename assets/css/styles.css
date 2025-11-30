@@ -1669,3 +1669,346 @@ a:hover {
     }
 }
 
+
+/* ===== TIMELINE SECTION ===== */
+.timeline-section {
+    background: var(--bg-dark); /* Dark background for premium feel */
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-section .section-title {
+    color: white;
+}
+
+.timeline-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Add subtle background elements */
+.timeline-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* Vertical line */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        transparent, 
+        var(--primary-color), 
+        var(--secondary-color), 
+        transparent
+    );
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+    opacity: 0.6;
+}
+
+.timeline-item {
+    padding: 10px 50px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+/* Left side items */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+/* Right side items */
+.timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+}
+
+/* Timeline dots (Icons) */
+.timeline-dot {
+    width: 50px;
+    height: 50px;
+    background: var(--bg-dark);
+    border: 2px solid rgba(99, 102, 241, 0.5);
+    border-radius: 50%;
+    position: absolute;
+    top: 24px;
+    right: -25px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 4px rgba(15, 23, 42, 1), 0 0 20px rgba(99, 102, 241, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.timeline-dot i {
+    font-size: 1.2rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -25px;
+}
+
+.timeline-item:hover .timeline-dot {
+    background: var(--bg-dark);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(15, 23, 42, 1), 0 0 30px rgba(99, 102, 241, 0.6);
+    transform: scale(1.1);
+}
+
+/* Content box */
+.timeline-content {
+    display: block;
+    text-decoration: none;
+    padding: 32px;
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* Arrow */
+.timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 36px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    transition: var(--transition);
+}
+
+.timeline-item:nth-child(odd) .timeline-content::after {
+    right: -10px;
+    border-left: 10px solid rgba(30, 41, 59, 0.4);
+}
+
+.timeline-item:nth-child(even) .timeline-content::after {
+    left: -10px;
+    border-right: 10px solid rgba(30, 41, 59, 0.4);
+}
+
+.timeline-item:hover:nth-child(odd) .timeline-content::after {
+    border-left-color: rgba(30, 41, 59, 0.6);
+}
+
+.timeline-item:hover:nth-child(even) .timeline-content::after {
+    border-right-color: rgba(30, 41, 59, 0.6);
+}
+
+.timeline-date {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.timeline-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #ffffff, #e2e8f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.timeline-title-link {
+    text-decoration: none;
+    color: inherit;
+    background: inherit;
+    -webkit-background-clip: inherit;
+    -webkit-text-fill-color: inherit;
+    background-clip: inherit;
+    transition: opacity 0.3s ease;
+}
+
+
+
+.timeline-title-link:hover {
+    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.timeline-description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.timeline-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-tag {
+    background: rgba(99, 102, 241, 0.25);
+    color: white;
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+/* Pulse Animation for Dots */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    }
+}
+
+.timeline-dot {
+    animation: pulse-glow 3s infinite;
+}
+
+.timeline-item:hover .timeline-dot {
+    animation: none; /* Stop pulse on hover to focus on the active state */
+}
+
+/* Gradient Border Effect for Cards */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius-lg);
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.timeline-item:hover .timeline-content::before {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.timeline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: var(--transition);
+    text-decoration: none;
+    position: relative;
+}
+
+.timeline-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: var(--transition);
+}
+
+.timeline-link:hover::after {
+    width: 100%;
+}
+
+.timeline-link i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.timeline-link:hover i {
+    transform: translateX(4px);
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+    .timeline-container::after {
+        left: 40px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 90px;
+        padding-right: 25px;
+    }
+
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 15px;
+        right: auto;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::after,
+    .timeline-item:nth-child(even) .timeline-content::after {
+        left: -10px;
+        right: auto;
+        border-right: 10px solid rgba(30, 41, 59, 0.4);
+        border-left: none;
+    }
+    
+    .timeline-item:hover:nth-child(odd) .timeline-content::after,
+    .timeline-item:hover:nth-child(even) .timeline-content::after {
+        border-right-color: rgba(30, 41, 59, 0.6);
+    }
+}
+
