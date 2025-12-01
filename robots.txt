@@ -1,14 +1,14 @@
-
 User-agent: *
 Allow: /
 
-Disallow: /stats
-Disallow: /assets
+# Disallow private or irrelevant directories/files
+Disallow: /stats/
+Disallow: /assets/
 Disallow: /data.json
 Disallow: /image_to_webp.py
-
-
+Disallow: /README.md
+Disallow: /.git/
+Disallow: /.idea/
+Disallow: /.vscode/
 
 Sitemap: https://hugomeuriel.fr/sitemap.xml
-
-
