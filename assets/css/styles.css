@@ -42,7 +42,7 @@ body {
     overflow-x: hidden;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
@@ -108,7 +108,7 @@ body {
     color: var(--text-primary);
     font-weight: 500;
     position: relative;
-    transition: var(--transition);
+    transition: var(--transition-smooth);
 }
 
 .nav-link::after {
@@ -192,10 +192,21 @@ body {
 }
 
 @keyframes float-orb {
-    0% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0, 0) scale(1); }
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
 }
 
 
@@ -270,7 +281,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    transition: var(--transition);
+    transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
     will-change: transform, box-shadow;
@@ -318,9 +329,22 @@ body {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-10px); }
-    60% { transform: translateX(-50%) translateY(-5px); }
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
 }
 
 .about-section,
@@ -455,7 +479,8 @@ body {
     background: var(--bg-primary);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
-    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
     will-change: transform, box-shadow;
     text-align: center;
     min-height: 140px;
@@ -647,9 +672,9 @@ body {
 }
 
 .premium-card {
-    background: linear-gradient(145deg, 
-        rgba(15, 23, 42, 0.95) 0%, 
-        rgba(30, 41, 59, 0.98) 100%);
+    background: linear-gradient(145deg,
+            rgba(15, 23, 42, 0.95) 0%,
+            rgba(30, 41, 59, 0.98) 100%);
     overflow: hidden;
     position: relative;
     max-width: 350px;
@@ -660,7 +685,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    box-shadow: 
+    box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.4),
         0 0 0 1px rgba(255, 255, 255, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -674,10 +699,10 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, 
-        transparent 30%, 
-        rgba(255, 255, 255, 0.1) 50%, 
-        transparent 70%);
+    background: linear-gradient(45deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent 70%);
     transform: translateX(-100%);
     transition: transform 0.6s ease;
     z-index: 1;
@@ -689,7 +714,7 @@ body {
 
 .premium-card:hover {
     transform: translateY(-12px) rotateX(5deg);
-    box-shadow: 
+    box-shadow:
         0 30px 60px rgba(0, 0, 0, 0.5),
         0 0 0 2px rgba(255, 255, 255, 0.25),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -730,9 +755,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(0, 0, 0, 0.8) 0%, 
-        rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.6) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -780,9 +805,9 @@ body {
 
 .project-content {
     padding: 24px;
-    background: linear-gradient(135deg, 
-        rgba(15, 23, 42, 0.98) 0%, 
-        rgba(30, 41, 59, 1) 100%);
+    background: linear-gradient(135deg,
+            rgba(15, 23, 42, 0.98) 0%,
+            rgba(30, 41, 59, 1) 100%);
     position: relative;
     flex: 1;
     display: flex;
@@ -813,9 +838,9 @@ body {
 }
 
 .project-badge {
-    background: linear-gradient(135deg, 
-        rgba(99, 102, 241, 0.9), 
-        rgba(139, 92, 246, 0.9));
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.9),
+            rgba(139, 92, 246, 0.9));
     color: white;
     padding: 6px 12px;
     border-radius: 16px;
@@ -854,9 +879,9 @@ body {
 }
 
 .tech-tag {
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.15) 0%, 
-        rgba(255, 255, 255, 0.08) 100%);
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.08) 100%);
     color: rgba(255, 255, 255, 0.95);
     padding: 6px 12px;
     border-radius: 20px;
@@ -869,9 +894,9 @@ body {
 }
 
 .tech-tag:hover {
-    background: linear-gradient(135deg, 
-        rgba(99, 102, 241, 0.8), 
-        rgba(139, 92, 246, 0.8));
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.8),
+            rgba(139, 92, 246, 0.8));
     color: white;
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
@@ -914,11 +939,14 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         transform: scale(1);
         box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
     }
+
     50% {
         opacity: 0.8;
         transform: scale(1.3);
@@ -927,11 +955,14 @@ body {
 }
 
 @keyframes pulse-offline {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         transform: scale(1);
         box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
     }
+
     50% {
         opacity: 0.8;
         transform: scale(1.3);
@@ -942,9 +973,9 @@ body {
 .project-link {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, 
-        rgba(99, 102, 241, 0.9), 
-        rgba(139, 92, 246, 0.9));
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.9),
+            rgba(139, 92, 246, 0.9));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -957,9 +988,9 @@ body {
 }
 
 .project-link:hover {
-    background: linear-gradient(135deg, 
-        rgba(99, 102, 241, 1), 
-        rgba(139, 92, 246, 1));
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 1),
+            rgba(139, 92, 246, 1));
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
 }
@@ -1097,21 +1128,21 @@ body {
         gap: 24px;
         margin-top: 50px;
     }
-    
+
     .premium-card {
         max-width: 100%;
         border-radius: 12px;
         border: 2px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 
+        box-shadow:
             0 15px 30px rgba(0, 0, 0, 0.4),
             0 0 0 1px rgba(255, 255, 255, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
-    
+
     .project-image {
         height: 180px;
     }
-    
+
     .project-icon {
         font-size: 2.8rem;
     }
@@ -1121,118 +1152,118 @@ body {
     .nav-menu {
         display: none;
     }
-    
+
     .nav-toggle {
         display: flex;
     }
-    
+
     .hero-content {
         grid-template-columns: 1fr;
         gap: 40px;
         text-align: center;
     }
-    
+
     .hero-visual {
         height: 300px;
     }
-    
+
     .about-content {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .projects-section {
         padding: 80px 0;
     }
-    
+
     .projects-controls {
         justify-content: flex-start;
         margin-top: 24px;
     }
-    
+
     .projects-filter {
         width: 100%;
         justify-content: space-between;
     }
-    
+
     .projects-filter select {
         width: 100%;
         text-align: left;
     }
-    
+
     .projects-grid {
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 16px;
         margin-top: 32px;
         max-width: 100%;
     }
-    
+
     .premium-card {
         max-width: 100%;
         margin: 0 auto;
         border-radius: 10px;
         border: 2px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 
+        box-shadow:
             0 12px 24px rgba(0, 0, 0, 0.4),
             0 0 0 1px rgba(255, 255, 255, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
-    
+
     .project-content {
         padding: 16px;
     }
-    
+
     .project-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
     }
-    
+
     .project-badge {
         align-self: flex-start;
     }
-    
+
     .project-image {
         height: 130px;
     }
-    
+
     .project-icon {
         font-size: 2rem;
     }
-    
+
     .project-title {
         font-size: 1.1rem;
     }
-    
+
     .project-description {
         font-size: 0.8rem;
         margin-bottom: 12px;
         line-height: 1.4;
     }
-    
+
     .project-tech {
         gap: 4px;
         margin-bottom: 12px;
     }
-    
+
     .tech-tag {
         padding: 3px 8px;
         font-size: 0.7rem;
     }
-    
+
     .project-link {
         width: 32px;
         height: 32px;
     }
-    
+
     .project-link i {
         font-size: 0.8rem;
     }
-    
+
     .projects-gradient-orb.orb-1,
     .projects-gradient-orb.orb-2,
     .projects-gradient-orb.orb-3,
@@ -1241,21 +1272,21 @@ body {
         height: 120px;
         filter: blur(60px);
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .footer-links {
         grid-template-columns: 1fr;
         gap: 32px;
     }
-    
+
     .hero-buttons {
         justify-content: center;
     }
-    
+
     .container {
         padding: 0 16px;
     }
@@ -1267,64 +1298,64 @@ body {
         gap: 18px;
         margin-top: 30px;
     }
-    
+
     .premium-card {
         border-radius: 8px;
         max-width: 80%;
         margin: 0 auto;
         border: 2px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 
+        box-shadow:
             0 10px 20px rgba(0, 0, 0, 0.4),
             0 0 0 1px rgba(255, 255, 255, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
-    
+
     .project-image {
         height: 150px;
     }
-    
+
     .project-icon {
         font-size: 2.2rem;
     }
-    
+
     .project-content {
         padding: 18px;
     }
-    
+
     .project-title {
         font-size: 1.15rem;
         margin-bottom: 8px;
     }
-    
+
     .project-description {
         font-size: 0.85rem;
         margin-bottom: 14px;
         line-height: 1.5;
     }
-    
+
     .project-tech {
         gap: 5px;
         margin-bottom: 14px;
     }
-    
+
     .tech-tag {
         padding: 4px 9px;
         font-size: 0.72rem;
     }
-    
+
     .project-link {
         width: 34px;
         height: 34px;
     }
-    
+
     .project-link i {
         font-size: 0.85rem;
     }
-    
+
     .project-status {
         font-size: 0.85rem;
     }
-    
+
     .project-status .status-dot {
         width: 7px;
         height: 7px;
@@ -1336,7 +1367,7 @@ body {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .btn {
         width: 100%;
         max-width: 280px;
@@ -1346,75 +1377,75 @@ body {
     .skills-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 12px;
         margin-top: 24px;
     }
-    
+
     .premium-card {
         max-width: 80%;
         margin: 0 auto;
         border-radius: 8px;
         border: 2px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 
+        box-shadow:
             0 8px 16px rgba(0, 0, 0, 0.4),
             0 0 0 1px rgba(255, 255, 255, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
-    
+
     .project-image {
         height: 110px;
     }
-    
+
     .project-icon {
         font-size: 1.6rem;
     }
-    
+
     .project-content {
         padding: 12px;
     }
-    
+
     .project-title {
         font-size: 1rem;
         margin-bottom: 6px;
     }
-    
+
     .project-description {
         font-size: 0.75rem;
         margin-bottom: 10px;
         line-height: 1.4;
     }
-    
+
     .project-tech {
         gap: 3px;
         margin-bottom: 10px;
     }
-    
+
     .tech-tag {
         padding: 2px 6px;
         font-size: 0.65rem;
     }
-    
+
     .project-link {
         width: 28px;
         height: 28px;
     }
-    
+
     .project-link i {
         font-size: 0.7rem;
     }
-    
+
     .project-status {
         font-size: 0.75rem;
     }
-    
+
     .project-status .status-dot {
         width: 6px;
         height: 6px;
     }
-    
+
     .projects-gradient-orb.orb-1,
     .projects-gradient-orb.orb-2,
     .projects-gradient-orb.orb-3,
@@ -1423,17 +1454,17 @@ body {
         height: 80px;
         filter: blur(40px);
     }
-    
+
     .about-section,
     .projects-section,
     .contact-section {
         padding: 60px 0;
     }
-    
+
     .section-header {
         margin-bottom: 40px;
     }
-    
+
     .container {
         padding: 0 12px;
     }
@@ -1444,72 +1475,72 @@ body {
         gap: 10px;
         margin-top: 24px;
     }
-    
+
     .premium-card {
         border-radius: 8px;
     }
-    
+
     .project-image {
         height: 120px;
     }
-    
+
     .project-icon {
         font-size: 1.8rem;
     }
-    
+
     .project-content {
         padding: 14px;
     }
-    
+
     .project-title {
         font-size: 1.05rem;
         margin-bottom: 6px;
     }
-    
+
     .project-description {
         font-size: 0.78rem;
         margin-bottom: 12px;
         line-height: 1.4;
     }
-    
+
     .project-tech {
         gap: 3px;
         margin-bottom: 12px;
     }
-    
+
     .tech-tag {
         padding: 3px 7px;
         font-size: 0.68rem;
     }
-    
+
     .project-link {
         width: 30px;
         height: 30px;
     }
-    
+
     .project-link i {
         font-size: 0.75rem;
     }
-    
+
     .project-status {
         font-size: 0.78rem;
     }
-    
+
     .project-status .status-dot {
         width: 6px;
         height: 6px;
     }
-    
+
     .container {
         padding: 0 10px;
     }
-    
+
     .about-section,
     .projects-section,
     .contact-section {
         padding: 50px 0;
     }
-    
+
     .section-header {
         margin-bottom: 30px;
     }
@@ -1520,77 +1551,77 @@ body {
         gap: 8px;
         margin-top: 20px;
     }
-    
+
     .premium-card {
         border-radius: 6px;
         border: 2px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 
+        box-shadow:
             0 6px 12px rgba(0, 0, 0, 0.4),
             0 0 0 1px rgba(255, 255, 255, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
-    
+
     .project-image {
         height: 90px;
     }
-    
+
     .project-icon {
         font-size: 1.4rem;
     }
-    
+
     .project-content {
         padding: 10px;
     }
-    
+
     .project-title {
         font-size: 0.9rem;
         margin-bottom: 4px;
     }
-    
+
     .project-description {
         font-size: 0.7rem;
         margin-bottom: 8px;
         line-height: 1.3;
     }
-    
+
     .project-tech {
         gap: 2px;
         margin-bottom: 8px;
     }
-    
+
     .tech-tag {
         padding: 1px 4px;
         font-size: 0.6rem;
     }
-    
+
     .project-link {
         width: 24px;
         height: 24px;
     }
-    
+
     .project-link i {
         font-size: 0.6rem;
     }
-    
+
     .project-status {
         font-size: 0.7rem;
     }
-    
+
     .project-status .status-dot {
         width: 5px;
         height: 5px;
     }
-    
+
     .container {
         padding: 0 6px;
     }
-    
+
     .about-section,
     .projects-section,
     .contact-section {
         padding: 32px 0;
     }
-    
+
     .section-header {
         margin-bottom: 24px;
     }
@@ -1610,7 +1641,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 60%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
@@ -1630,13 +1661,14 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.4) 0%, transparent 60%),
         radial-gradient(circle at 70% 70%, rgba(16, 185, 129, 0.3) 0%, transparent 60%);
     z-index: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -1672,7 +1704,8 @@ a:hover {
 
 /* ===== TIMELINE SECTION ===== */
 .timeline-section {
-    background: var(--bg-dark); /* Dark background for premium feel */
+    background: var(--bg-dark);
+    /* Dark background for premium feel */
     padding: 120px 0;
     position: relative;
     overflow: hidden;
@@ -1709,12 +1742,11 @@ a:hover {
     content: '';
     position: absolute;
     width: 2px;
-    background: linear-gradient(to bottom, 
-        transparent, 
-        var(--primary-color), 
-        var(--secondary-color), 
-        transparent
-    );
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--primary-color),
+            var(--secondary-color),
+            transparent);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -1901,9 +1933,11 @@ a:hover {
     0% {
         box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
     }
@@ -1914,7 +1948,8 @@ a:hover {
 }
 
 .timeline-item:hover .timeline-dot {
-    animation: none; /* Stop pulse on hover to focus on the active state */
+    animation: none;
+    /* Stop pulse on hover to focus on the active state */
 }
 
 /* Gradient Border Effect for Cards */
@@ -1927,7 +1962,7 @@ a:hover {
     bottom: 0;
     border-radius: var(--border-radius-lg);
     padding: 1px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -2005,10 +2040,9 @@ a:hover {
         border-right: 10px solid rgba(30, 41, 59, 0.4);
         border-left: none;
     }
-    
+
     .timeline-item:hover:nth-child(odd) .timeline-content::after,
     .timeline-item:hover:nth-child(even) .timeline-content::after {
         border-right-color: rgba(30, 41, 59, 0.6);
     }
 }
-
