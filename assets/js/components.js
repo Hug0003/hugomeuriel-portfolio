@@ -124,7 +124,8 @@ function reinitializeScripts() {
             const url = this.getAttribute('data-url');
             if (url) {
                 if (url.startsWith('http') || url.startsWith('https')) {
-                    window.open(url, '_blank');
+                    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                    if (newWindow) newWindow.opener = null;
                 } else {
                     window.location.href = url;
                 }
@@ -136,7 +137,8 @@ function reinitializeScripts() {
                 const url = this.getAttribute('data-url');
                 if (url) {
                     if (url.startsWith('http') || url.startsWith('https')) {
-                        window.open(url, '_blank');
+                        const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                        if (newWindow) newWindow.opener = null;
                     } else {
                         window.location.href = url;
                     }

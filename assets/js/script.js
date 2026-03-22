@@ -100,67 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Add CSS for animations
-    const style = document.createElement('style');
-    style.textContent = `
-        .section-header,
-        .about-card,
-        .skill-item,
-        .stat-card,
-        .project-card,
-        .contact-card,
-        .timeline-item {
-            opacity: 0;
-            transform: translateY(30px) scale(0.95);
-            filter: blur(10px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: opacity, transform, filter;
-        }
-        
-        .animate-in {
-            opacity: 1 !important;
-            transform: translateY(0) scale(1) !important;
-            filter: blur(0) !important;
-        }
-        
-        .nav-menu.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-toggle.active .bar:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .nav-toggle.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .nav-toggle.active .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-        
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-        }
-        
-        .loading-overlay {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-    `;
-    
-    document.head.appendChild(style);
+    // Animation styles are now in styles.css
 
 
     // Typing effect for hero title
@@ -354,7 +294,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const url = this.getAttribute('data-url');
       if (url) {
         if (url.startsWith('http') || url.startsWith('https')) {
-          window.open(url, '_blank');
+          const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+          if (newWindow) newWindow.opener = null;
         } else {
           window.location.href = url;
         }
@@ -366,7 +307,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const url = this.getAttribute('data-url');
         if (url) {
           if (url.startsWith('http') || url.startsWith('https')) {
-            window.open(url, '_blank');
+            const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+            if (newWindow) newWindow.opener = null;
           } else {
             window.location.href = url;
           }
@@ -386,36 +328,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const renderProjects = (list) => {
     if (!containerProjects) return;
     containerProjects.innerHTML = '';
-
     list.forEach(site => {
+      const card = document.createElement('div');
+      card.className = 'project-card premium-card';
+      card.setAttribute('data-url', site.url);
+      
       const technologiesHtml = Array.isArray(site.technologies)
         ? site.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')
         : '';
 
-      containerProjects.insertAdjacentHTML(
-        'beforeend',
-        `
-          <div class="project-card premium-card" data-url="${site.url}">
-            <div class="project-image" style="${site.color}">
+      card.innerHTML = `
+            <div class="project-image" style="${site.color || ''}">
               <div class="project-icon">
-                <i class="${site.icon}"></i>
+                <i class="${site.icon || 'fas fa-project-diagram'}"></i>
               </div>
               <div class="project-overlay">
                 <div class="overlay-content">
                   <i class="fas fa-external-link-alt"></i>
-                  <span>${site.voir}</span>
+                  <span class="view-text"></span>
                 </div>
               </div>
               <div class="project-gradient"></div>
             </div>
             <div class="project-content">
               <div class="project-header">
-                <h3 class="project-title">${site.name}</h3>
-                <div class="project-badge">${site.type}</div>
+                <h3 class="project-title"></h3>
+                <div class="project-badge"></div>
               </div>
-              <p class="project-description">
-                ${site.description}
-              </p>
+              <p class="project-description"></p>
               <div class="project-tech">
                 ${technologiesHtml}
               </div>
@@ -427,11 +367,18 @@ document.addEventListener('DOMContentLoaded', function() {
                   <i class="fas fa-arrow-right"></i>
                 </div>
               </div>
-            </div>
-          </div>`
-      );
+            </div>`;
 
-      const inserted = containerProjects.lastElementChild;
+      // Prevenir XSS en injectant le texte via textContent
+      card.querySelector('.project-title').textContent = site.name || '';
+      card.querySelector('.project-badge').textContent = site.type || '';
+      card.querySelector('.project-description').textContent = site.description || '';
+      const viewText = card.querySelector('.view-text');
+      if (viewText) viewText.textContent = site.voir || 'Voir';
+
+      containerProjects.appendChild(card);
+
+      const inserted = card;
       if (inserted) {
         inserted.classList.add('animate-in');
         attachProjectCardInteractions(inserted);
@@ -524,15 +471,13 @@ document.addEventListener('loadAllComponents', function() {
     })
     .then(sites => {
       sites.forEach(site => {
-        // Créer le HTML initial avec un placeholder pour status
-        containerProjectsFooter.insertAdjacentHTML(
-          'beforeend',
-          `
-                <a href="${site.url}" target="_blank">
-                    ${site.name}
-                </a>`
-            );
-        });
+        const link = document.createElement('a');
+        link.href = site.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = site.name;
+        containerProjectsFooter.appendChild(link);
+      });
     });
 });
 
