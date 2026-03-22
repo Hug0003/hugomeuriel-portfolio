@@ -49,6 +49,23 @@
       "status": "crushbrito-status"
    },
    {
+<<<<<<< HEAD
+=======
+      "url": "n8n-projects.html",
+      "name": "N8N Projects",
+      "color": "background: linear-gradient(135deg, #663399 0%, #33CC99 100%);",
+      "icon": "fas fa-code",
+      "type": "automatisation",
+      "category": "autre",
+      "voir": "Voir le projet",
+      "description": "Automatisation avec des agents IA N8N et API.",
+      "technologies": [
+         "N8N",
+         "API"
+      ]
+   },
+   {
+>>>>>>> 98ef8c2da2bef8bb9605bf7f6b5ba77005078145
       "url": "money-manager.html",
       "name": "Money Manager",
       "color": "background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 25%, #d97706 50%, #b45309 75%, #0b1020 100%);",
