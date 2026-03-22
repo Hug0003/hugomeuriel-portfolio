@@ -399,23 +399,26 @@ if (containerProjects) {
 }
 
 async function verifierSite(url) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 secondes de timeout
+
   try {
-    const reponse = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
-    // Les requêtes HEAD cross-origin retourneront probablement pas ok,
-    // donc on suppose online si c'est une URL http(s) externe
-    if (reponse && (reponse.ok || url.startsWith('http'))) {
-      return `
-          <span class="status-dot_online"></span>
-          <span>En ligne</span>
-        `;
-    } else {
-      // Pour les urls locales/fichiers non accédés
-      return `
-          <span class="status-dot_offline"></span>
-          <span>Hors ligne</span>
-        `;
-    }
+    // Utiliser 'no-cors' pour éviter les blocages CORS sur les domaines externes
+    // On ne pourra pas lire le statut (opaque), mais si ça ne throw pas, le site est atteignable.
+    await fetch(url, { 
+      method: 'GET', // GET est plus souvent supporté que HEAD par certains serveurs/CDN
+      mode: 'no-cors',
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+    return `
+        <span class="status-dot_online"></span>
+        <span>En ligne</span>
+      `;
   } catch (erreur) {
+    clearTimeout(timeoutId);
+    // Si c'est une erreur réseau ou un timeout, on considère hors ligne
     return `
         <span class="status-dot_offline"></span>
         <span>Hors ligne</span>
