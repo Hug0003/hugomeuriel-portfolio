@@ -399,19 +399,32 @@ if (containerProjects) {
 }
 
 async function verifierSite(url) {
+  const cible = new URL(url, window.location.href);
+
+  // Sites d'un autre domaine (deva2.fr, GitHub…) : le navigateur ne peut pas les tester de façon
+  // fiable (en-têtes Cross-Origin-Resource-Policy, CSP), on les signale simplement comme externes.
+  if (cible.origin !== window.location.origin) {
+    return `
+        <span class="status-dot_external"></span>
+        <span>Site externe</span>
+      `;
+  }
+
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 secondes de timeout
 
   try {
-    // Utiliser 'no-cors' pour éviter les blocages CORS sur les domaines externes
-    // On ne pourra pas lire le statut (opaque), mais si ça ne throw pas, le site est atteignable.
-    await fetch(url, { 
-      method: 'GET', // GET est plus souvent supporté que HEAD par certains serveurs/CDN
-      mode: 'no-cors',
+    // Projets hébergés sur hugomeuriel.fr : vraie vérification du code de réponse.
+    const response = await fetch(cible, {
+      method: 'HEAD',
+      cache: 'no-store',
       signal: controller.signal
     });
-    
+
     clearTimeout(timeoutId);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
     return `
         <span class="status-dot_online"></span>
         <span>En ligne</span>
