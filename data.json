@@ -33,7 +33,7 @@
       "status": "github-status"
    },
    {
-      "url": "https://crushbrito.hugomeuriel.fr",
+      "url": "https://hugomeuriel.fr/projets/crushbrito/",
       "name": "CrushBrito",
       "color": "background: linear-gradient(135deg, #111111 0%, #222222 25%, #666666 50%, #bfbfbf 75%, #fafafa 100%);",
       "icon": "fas fa-users",
@@ -79,7 +79,7 @@
       ]
    },
    {
-      "url": "https://sunorcloud.hugomeuriel.fr",
+      "url": "https://hugomeuriel.fr/projets/sunorcloud/",
       "name": "SunOrCloud",
       "color": "background: linear-gradient(135deg, #00aaff 0%, #60a5fa 25%, #fcd34d 50%, #fbbf24 75%, #38bdf8 100%);",
       "icon": "fas fa-cloud-sun",
@@ -95,7 +95,7 @@
       "status": "sunorcloud-status"
    },
    {
-      "url": "https://robot.hugomeuriel.fr",
+      "url": "https://hugomeuriel.fr/projets/robot/",
       "name": "Robot",
       "color": "background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 25%, #d97706 50%, #b45309 75%, #0f172a 100%);",
       "icon": "fas fa-robot",
@@ -110,7 +110,7 @@
       "status": "robot-status"
    },
    {
-      "url": "https://pizzamama.hugomeuriel.fr",
+      "url": "https://hugomeuriel.fr/projets/pizzamama/",
       "name": "Pizzamama",
       "color": "background: linear-gradient(135deg, #a0522d 0%, #c68642 25%, #8b5c2b 50%, #5c4033 75%, #7f5a36 100%);",
       "icon": "fas fa-pizza-slice",
@@ -126,7 +126,7 @@
       "status": "pizzamama-status"
    },
    {
-      "url": "https://trillo.hugomeuriel.fr",
+      "url": "https://hugomeuriel.fr/projets/trillo/",
       "name": "Trillo",
       "color": "background: linear-gradient(135deg, #e11d48 0%, #f43f5e 25%, #db2777 50%, #be185d 75%, #7f1d1d 100%);",
       "icon": "fas fa-bed",
@@ -142,7 +142,7 @@
       "status": "trillo-status"
    },
    {
-      "url": "https://icecream.hugomeuriel.fr",
+      "url": "https://hugomeuriel.fr/projets/icecream/",
       "name": "Ice Cream",
       "color": "background: linear-gradient(135deg, #f472b6 0%, #f9a8d4 25%, #f59e0b 50%, #fbbf24 75%, #fef3c7 100%);",
       "icon": "fas fa-ice-cream",
@@ -157,7 +157,7 @@
       "status": "icecream-status"
    },
    {
-      "url": "https://nexter.hugomeuriel.fr",
+      "url": "https://hugomeuriel.fr/projets/nexter/",
       "name": "Nexter",
       "color": "background: linear-gradient(135deg, #7f5a36 0%, #5c4033 30%, #0f172a 65%, #334155 100%);",
       "icon": "fas fa-home",
@@ -173,7 +173,7 @@
       "status": "nexter-status"
    },
    {
-      "url": "https://natours.hugomeuriel.fr",
+      "url": "https://hugomeuriel.fr/projets/natours/",
       "name": "Natours",
       "color": "background: linear-gradient(135deg, #22c55e 0%, #4ade80 25%, #16a34a 50%, #15803d 75%, #14532d 100%);",
       "color-after": "background: radial-gradient(circle at 25% 75%, rgba(34, 197, 94, 0.35) 0%, transparent 55%);",
