@@ -1,0 +1,62 @@
+
+:root{
+    --couleur_back: rgb(0, 8, 79);
+    --couleur_front_2: rgb(107, 191, 232);
+    --couleur_front_3 : rgba(49, 143, 189, 0.606);
+    --couleur_front_4: rgba(107, 190, 232, 0.226);
+}
+
+*{
+    font-family: 'Gabarito', sans-serif;
+}
+
+body{
+    background:#000000 ;
+    color: black;
+    font-family: 'Gabarito', sans-serif;
+
+}
+
+
+
+
+table{
+    text-decoration: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.753);
+    border-top: rgba(255, 255, 255, 0.548) 1px solid;
+    border-left: rgba(255, 255, 255, 0.548) 1px solid;
+    border-radius: 24px;
+    margin-top: 20px;
+    padding: 5px 100px;
+
+}
+
+.image{
+    border-radius: 50%;
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+
+}
+
+a.nom{
+    text-decoration: none;
+    color: black;
+}
+
+
+span.date{
+    color: rgb(235, 13, 13);
+}
+
+@media only screen and (max-width: 570px){
+
+    table{
+        padding: 0px 5px;
+
+    }
+    
+}

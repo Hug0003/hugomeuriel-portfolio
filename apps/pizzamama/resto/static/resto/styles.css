@@ -1,0 +1,266 @@
+body{
+    background: url("images/main_background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+}
+
+.centered{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#small_logo{
+  margin: 20px 20px ;
+}
+
+a.login, a.logout{
+  background-color: rgba(117, 87, 6, 0.856);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.856);
+  margin-top:10px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  text-decoration: none;
+  position: fixed;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  transition: 0.25s;
+}
+
+a.logout{
+  margin-top: 35px;
+}
+
+
+a.login:hover, a.logout:hover{
+  background-color:rgb(233, 174, 120);
+  color: rgba(120, 88, 9, 0.856);
+}
+
+a.signup{
+  background-color: rgba(117, 87, 6, 0.856);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.856);
+  margin-top:10px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  text-decoration: none;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 70%;
+  line-height: 20px;
+  transition: 0.25s;
+}
+
+a.signup:hover{
+  background-color:rgb(233, 174, 120);
+  color: rgba(120, 88, 9, 0.856);
+}
+
+
+
+
+
+
+/* Réinitialisation des styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style du menu principal */
+
+
+  .menu ul {
+    list-style: none;
+    background-color: #262626a0;
+    padding: 10px;
+    text-align: center;
+    padding-right: 25px;
+    
+    
+  }
+  
+  .menu li {
+    display: inline-block;
+    position: relative;
+    padding: 10px 20px;
+    
+  }
+  
+  .menu li a {
+    color: #b9b7b7;
+    text-decoration: none;
+    margin-top: 15px;
+    margin: 0 20px;
+  }
+  
+  .menu li:hover {
+    background-color: #4b4b4ba0;
+  }
+  
+  /* Style du menu déroulant (sous-menu) */
+  .menu ul ul {
+    display: none;
+    position: absolute;
+    top:100%;
+    left: 0;
+    background-color: #4b4b4ba0;
+    width: 100%;
+    min-width: 120px; 
+    margin: 0 -10px;
+  }
+  
+  .menu li:hover ul {
+    display: block;
+  }
+  
+  .menu ul ul li {
+    display: block;
+  }
+
+  p.name{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    background-color: rgba(173, 109, 25, 0.572);
+    border-radius: 5px;
+    margin-top: 15px;
+
+    display: inline-block;
+    padding: 5px 8px;
+    
+  }
+
+  div.name{
+    text-align: center;
+  }
+
+  a.cadis{
+    position: relative;
+    float: right;
+    margin-top: -60px;
+
+  }
+
+div.cart{
+  -webkit-backdrop-filter: blur(15px); /* assure la compatibilité avec safari */
+  backdrop-filter: blur(15px);
+  background-color: rgba(182, 182, 182, 0.2);
+  display: block;
+  width: 180px;
+  margin-left: 50px;
+  margin-top: 15px;
+  border-radius: 5px;
+  
+
+}
+
+h2.name{
+  text-align: center;
+  margin-top: 5px;
+}
+
+img.image{
+  display: block;
+  margin: 0 auto;
+}
+
+p.quantity{
+  text-align: center;
+}
+
+p.price{
+  text-align: center;
+}
+
+p.sup{
+  text-align: center;
+  background-color: #ae0404;
+  display: block;
+  padding: 5px;
+  border-radius: 15px;
+
+}
+
+p.sup:hover{
+  background-color: #961414;
+  box-shadow: 0.1px 0.1px 2px 0.1px rgb(0, 0, 0);
+}
+
+a.sup{
+  color: white;
+  text-decoration: none;
+
+}
+
+@media only screen and (max-width: 550px){
+
+  #small_logo{
+    margin: 30px 30px;
+  }
+
+
+
+.menu ul {
+  padding-top: 5px;
+  font-size: 12px; 
+  margin-left: -30px;
+
+}
+
+.menu li {
+  padding: 10px 0px;
+}
+
+.menu li a {
+  margin: 0 15px;
+}
+
+
+/* Style du menu déroulant (sous-menu) */
+.menu ul ul {
+  left: -20px;
+  min-width: 100px; 
+}
+
+
+a.cadis{
+
+  margin-top: -52px;
+
+}
+
+div.cart{
+-webkit-backdrop-filter: blur(15px); /* assure la compatibilité avec safari */
+backdrop-filter: blur(15px);
+background-color: rgba(182, 182, 182, 0.2);
+display: block;
+width: 180px;
+margin-left: 50px;
+margin-top: 15px;
+border-radius: 5px;
+
+}
+    
+}
+
+@media only screen and (max-height : 600px){
+
+  a.login{
+    margin-top: 30px;
+  }
+
+  a.signup{
+    margin-top: 35px;
+  }
+}
+

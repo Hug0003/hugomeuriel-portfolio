@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'resto/styles.css' %}">
+
+</head>
+<body>
+
+    
+    <a href="{% url 'index' %}"><img id="small_logo" src="{% static 'resto/images/small_logo.png' %}"></a>
+
+<div class="cart">
+    <form class="sup" method="post" action="{% url 'delete-cart' %}">
+        {% csrf_token %}
+        <p class="sup"><button class="sup" type="submit" style="background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer"> Supprimer le panier</button></p>
+    </form>
+
+    {% for order in orders %}
+    <h2 class="name">{{order.product.name}}</h2>
+    <img class="image" src="{{ order.product.thumbnail.url }}" alt="{{order.product.name}}" style="max-width: 120px;">
+    <p class="quantity">{{ order.quantity }} dans le panier</p>
+    <p class="price">{{ order.product.price }}€ le produit</p>
+    {% endfor %}
+</div>
+
+    
+    
+</body>
+</html>

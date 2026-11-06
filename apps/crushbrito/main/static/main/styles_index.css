@@ -1,0 +1,351 @@
+
+
+body{
+    overflow-y: hidden; /* Masquer le défilement vertical */
+    overflow-x: hidden; /* Masquer le défilement horizontal */
+    background:#000000 ;
+    color: black;
+    font-family: 'Gabarito', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+*{
+  font-family: 'Gabarito', sans-serif;
+}
+
+
+
+.animation-container {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: 'https://fonts.googleapis.com/css?family=Roboto:300';
+  font-weight: 300px;
+  font-size: 32px;
+  padding-top: 40vh;
+  margin-top: -50px;
+  overflow: hidden;
+  
+}
+
+.animation-container div {
+  display: inline;
+  overflow: hidden;
+  white-space: nowrap;
+  
+}
+
+.animation-container div:first-of-type {
+  animation-duration:8s ;
+  animation-name: showup;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  text-decoration:overline;
+  
+}
+
+.animation-container div:last-of-type {
+  width: 0px;
+  animation-duration:8s ;
+  animation-name: reveal;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  
+}
+
+.animation-container div:last-of-type span {
+  margin-left: -355px;
+  animation-duration:8s ;
+  animation-name: slidein;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  text-decoration: underline;
+}
+
+a.signup{
+    padding: 8px 30px;
+    left: 60%;
+    top: 50%;
+
+}
+
+a.login{
+    padding: 8px 22px;
+    left: 40%;
+    top: 50%;
+
+}
+
+a.login, a.signup{
+    position: fixed;
+    background: white;
+    border-top: rgba(255, 255, 255, 0.548) 1px solid;
+    border-left: rgba(255, 255, 255, 0.548) 1px solid;
+    color: rgba(0, 0, 0);
+    transform: translate(-50%, -50%);
+    transition: 0.25s;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 25px;
+    padding-bottom: 11px;
+    
+
+}
+
+a.login:hover, a.signup:hover{
+    top: 49.5%;
+}
+
+a.logout{
+  padding: 8px 25px;
+  left: 60%;
+  top: 50%;
+
+}
+
+a.profile{
+  padding: 8px 26px;
+  left: 40%;
+  top: 50%;
+
+}
+
+
+a.logout, a.profile{
+  
+  position: fixed;
+  background: white;
+  border-top: rgba(255, 255, 255, 0.548) 1px solid;
+  border-left: rgba(255, 255, 255, 0.548) 1px solid;
+  color: rgb(0, 0, 0);
+  transform: translate(-50%, -50%);
+  transition: 0.25s;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 25px;
+  padding-bottom: 11px;
+  
+
+}
+
+a.logout:hover, a.profile:hover{
+  top: 49.5%;
+}
+
+
+
+
+p.presentation{
+    color:rgb(255, 255, 255) ;
+    min-width: 250px;
+    max-width: 500px;
+    font-size: 22px;
+    transition: 0.25s;
+    animation: textAnimated 30s ease infinite;
+
+
+}
+
+
+div.presentation{
+    display: block;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    bottom: 15%;
+    transform: translate(-50%, 0%);
+}
+
+
+
+
+
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:0;}
+    35%{opacity: 1;}
+    80% {opacity:1;}
+    100% {opacity:1;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px;opacity: 0; }
+    20% { margin-left:-800px; opacity: 0; }
+    35% { margin-left:0px;opacity: 1;}
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;opacity: 0; }
+    20% {opacity:1;width:0px;opacity:1;}
+    30% {width:355px; }
+    80% {opacity:1;}
+    100% {opacity:1;width:355px;}
+}
+
+@keyframes textAnimated {
+	0% {background:linear-gradient(70deg,rgb(255, 255, 255),rgb(212, 212, 212),rgb(175, 175, 175),rgb(207, 207, 207),rgb(251, 251, 251)); background-position:-12em 0; background-clip:text; -webkit-background-clip:text; color:transparent;}
+	50% {background:linear-gradient(85deg,rgb(255, 255, 255),rgb(212, 212, 212),rgb(175, 175, 175),rgb(207, 207, 207),rgb(251, 251, 251)); background-position:0 0; background-clip:text; -webkit-background-clip:text; color:transparent;}
+	100% {background:linear-gradient(70deg,rgb(255, 255, 255),rgb(212, 212, 212),rgb(175, 175, 175),rgb(207, 207, 207),rgb(251, 251, 251)); background-position:-12em; background-clip:text; -webkit-background-clip:text; color:transparent;}
+}
+
+
+@media only screen and (max-width: 740px){
+  .animation-container {
+    font-size: 30px;
+    padding-top: 30vh;
+    margin-top: -40px;
+  }
+  
+  a.signup{
+      padding: 6px 20px;
+      left: 65%;
+      top: 40%;
+  }
+
+  a.login{
+      padding: 6px 8px;
+      left: 35%;
+      top: 40%;
+  }
+
+  a.signup:hover, a.login:hover{
+    top: 39.5%;
+  }
+  
+  a.logout{
+    padding: 6px 25px;
+    left: 65%;
+    top: 40%;
+  }
+  
+  a.profile{
+    padding: 6px 23px;
+    left: 35%;
+    top: 40%;
+  }
+  
+  a.logout:hover, a.profile:hover{
+    top: 39.5%;
+  }
+  
+  p.presentation{
+      min-width: 350px;
+      max-width: 500px;
+      font-size: 22px;
+  }
+  
+  div.presentation{
+      bottom: 28%;
+  }
+
+}
+
+@media only screen and (max-width: 520px){
+  .animation-container {
+    font-size: 28px;
+    padding-top: 30vh;
+    margin-top: -20px;
+  }
+  
+  a.signup{
+      padding: 6px 15px;
+      left: 70%;
+      top: 40%;
+      font-size: 18px;
+  }
+
+  a.login{
+      padding: 6px 8px;
+      left: 30%;
+      top: 40%;
+      font-size: 18px;
+  }
+  
+  a.logout{
+    padding: 6px 25px;
+    left: 70%;
+    top: 40%;
+    font-size: 18px;
+  }
+  
+  a.profile{
+    padding: 6px 23px;
+    left: 30%;
+    top: 40%;
+    font-size: 18px;
+  }
+  
+  a.logout:hover, a.profile:hover{
+    top: 39.5%;
+  }
+  
+  p.presentation{
+      min-width: 300px;
+      max-width: 500px;
+      font-size: 22px;
+  }
+  
+  div.presentation{
+      bottom: 18%;
+  }
+
+}
+
+
+
+@media only screen and (max-height: 730px){
+  .animation-container {
+    font-size: 28px;
+    padding-top: 30vh;
+    margin-top: -10px;
+  }
+
+  
+  a.signup{
+      padding: 6px 15px;
+      left: 70%;
+      top: 40%;
+      font-size: 18px;
+  }
+
+  a.login{
+      padding: 6px 8px;
+      left: 30%;
+      top: 40%;
+      font-size: 18px;
+  }
+  
+  a.logout{
+    padding: 6px 10px;
+    left: 70%;
+    top: 40%;
+    font-size: 18px;
+  }
+  
+  a.profile{
+    padding: 6px 23px;
+    left: 30%;
+    top: 40%;
+    font-size: 18px;
+  }
+  
+  a.logout:hover, a.profile:hover{
+    top: 39.5%;
+  }
+  
+  p.presentation{
+      min-width: 300px;
+      max-width: 500px;
+      font-size: 18px;
+  }
+  
+  div.presentation{
+      bottom: 7%;
+  }
+
+}

@@ -1,0 +1,32 @@
+
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/styles_.css' %}">
+    <title>login</title>
+</head>
+<body>
+
+
+<form method="POST" name="form" onsubmit="return validated()">
+    {% csrf_token %}
+    <a class="retour" href="{% url 'index' %}">X</a>
+        <h1>Login</h1>
+        {% for error in errors %}<p class="erreur" style="color: #c00;">{{ error }}</p>{% endfor %}
+        <input autocomplete="off" type="text" name="username" placeholder="entrer votre prenom">
+        <input autocomplete="off" style="border-bottom-color: black; border-left-color:black  ;" type="password" name="password" placeholder="entrer votre mot de passe">
+        <button type="submit" name="valide">valide</button>
+        <button type="reset" name="annuler">annuler</button>
+        <p class="sign_up">vous n'avez pas de compte :<a class="sign_up" href="{% url 'signup' %}">sign up</a></p>
+    </form>
+
+
+<script src="{% static 'accounts/valid_.js' %}"></script>
+
+
+</body>
+</html>

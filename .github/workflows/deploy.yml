@@ -1,7 +1,12 @@
 name: Build and publish
 
-# Push sur main → image construite et publiée sur GHCR (tags « latest » et SHA du commit).
-# Puis le workflow de sites-infra déploie l'image sur 192.168.11.134 (VPN + SSH).
+# Image unique de hugomeuriel.fr (portfolio + tous les projets) :
+#   1. construction ;
+#   2. contrôles Django (check --deploy, migrations) pour crushbrito et pizzamama ;
+#   3. test de fumée : le conteneur est lancé comme en production (lecture seule, sans privilèges)
+#      et chaque chemin doit répondre ;
+#   4. publication sur ghcr.io/hug0003/hugomeuriel (:latest et :<sha>) ;
+#   5. le workflow Deploy de sites-infra la déploie sur 192.168.11.134 (VPN + SSH).
 on:
   push:
     branches: [main]
@@ -10,10 +15,7 @@ on:
   workflow_dispatch:
 
 env:
-  # À adapter dans chaque repo : nom de l'image utilisé dans sites-infra/docker-compose.yml.
-  IMAGE: ghcr.io/hug0003/site-portfolio
-  # Dossier du Dockerfile : « . » pour un site statique, « osculte » ou « pizzeria » pour Django.
-  CONTEXT: .
+  IMAGE: ghcr.io/hug0003/hugomeuriel
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -21,7 +23,6 @@ concurrency:
 
 jobs:
   build:
-    # Runners GitHub par défaut. Pour un runner auto-hébergé : variable de dépôt RUNS_ON = self-hosted.
     runs-on: ${{ vars.RUNS_ON || 'ubuntu-latest' }}
     permissions:
       contents: read
@@ -34,6 +35,88 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Build image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64
+          load: true
+          tags: ${{ env.IMAGE }}:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Bloque la publication si la configuration de production n'est pas sûre ou si une migration manque.
+      - name: Django security checks
+        run: |
+          for app in crushbrito pizzamama; do
+            echo "--- $app"
+            docker run --rm \
+              -e DJANGO_SECRET_KEY="$(openssl rand -base64 48)" \
+              -e DJANGO_ALLOWED_HOSTS=hugomeuriel.fr \
+              -e DJANGO_DB_PATH=/tmp/check.sqlite3 \
+              -e DJANGO_SCRIPT_NAME=/projets/$app \
+              --tmpfs /tmp \
+              -w /srv/apps/$app \
+              "$IMAGE:test" \
+              sh -c "python manage.py check --deploy --fail-level WARNING && python manage.py makemigrations --check --dry-run"
+          done
+
+      # Lance le conteneur comme sur le serveur et vérifie chaque chemin.
+      - name: Smoke test
+        run: |
+          mkdir -p "$RUNNER_TEMP/env" "$RUNNER_TEMP/data"
+          chmod 777 "$RUNNER_TEMP/data"
+          for app in crushbrito pizzamama; do
+            printf 'DJANGO_SECRET_KEY=%s\nDJANGO_ADMIN_PATH=gestion-test/\n' "$(openssl rand -hex 32)" > "$RUNNER_TEMP/env/$app.env"
+          done
+          printf 'OWM_API_KEY=test\nOPENCAGE_API_KEY=test\n' > "$RUNNER_TEMP/env/sunorcloud.env"
+          chmod 644 "$RUNNER_TEMP"/env/*.env
+
+          docker run -d --name site -p 8080:8080 \
+            --read-only --tmpfs /tmp --cap-drop ALL --security-opt no-new-privileges:true \
+            -v "$RUNNER_TEMP/env:/env:ro" -v "$RUNNER_TEMP/data:/data" \
+            "$IMAGE:test"
+
+          ok=""
+          for i in $(seq 30); do
+            if curl -fs -o /dev/null -H "Host: hugomeuriel.fr" -H "X-Forwarded-Proto: https" http://127.0.0.1:8080/projets/pizzamama/; then ok=1; break; fi
+            sleep 2
+          done
+          [ -n "$ok" ] || { docker logs site; exit 1; }
+
+          fail=0
+          check() {
+            code=$(curl -s -o /dev/null -w "%{http_code}" -H "Host: hugomeuriel.fr" -H "X-Forwarded-Proto: https" "http://127.0.0.1:8080$1")
+            if [ "$code" = "$2" ]; then echo "OK    $code $1"; else echo "ÉCHEC $code $1 (attendu $2)"; fail=1; fi
+          }
+          check / 200
+          check /index.html 200
+          check /data.json 200
+          for p in guessmynumber icecream natours nexter trillo robot sunorcloud crushbrito pizzamama; do
+            check /projets/$p/ 200
+            check /projets/$p 301
+          done
+          check /projets/crushbrito/static/main/scripts.js 200
+          check "/projets/sunorcloud/api/weather?lat=abc&lon=1" 400
+          # Fichiers qui ne doivent jamais être servis
+          check /apps/crushbrito/manage.py 404
+          check /docker/start.sh 404
+          check /Dockerfile 404
+          check /image_to_webp.py 404
+          check /.git/config 404
+          check /projets/sunorcloud/config.js 404
+
+          echo "--- En-têtes"
+          for p in / /projets/robot/ /projets/sunorcloud/; do
+            curl -sI -H "Host: hugomeuriel.fr" "http://127.0.0.1:8080$p" | grep -qi '^content-security-policy:' \
+              && echo "OK    CSP $p" || { echo "ÉCHEC CSP absente $p"; fail=1; }
+          done
+          curl -sI -H "Host: hugomeuriel.fr" http://127.0.0.1:8080/projets/robot/ | grep -qi "unsafe-eval" \
+            && echo "OK    CSP propre au robot" || { echo "ÉCHEC CSP du robot"; fail=1; }
+
+          if [ "$fail" != 0 ]; then docker logs site; exit 1; fi
+          docker rm -f site > /dev/null
+
       - name: Log into GHCR
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
@@ -42,20 +125,19 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Sur une pull request, l'image est seulement construite (vérifie que le build passe).
-      - name: Build and push
+      - name: Push image
+        if: github.event_name != 'pull_request'
         uses: docker/build-push-action@v5
         with:
-          context: ${{ env.CONTEXT }}
+          context: .
           platforms: linux/amd64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: |
             ${{ env.IMAGE }}:latest
             ${{ env.IMAGE }}:${{ github.sha }}
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
           cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       # Demande à sites-infra de déployer la nouvelle image sur 192.168.11.134 (VPN géré là-bas).
       # Secret SITES_DEPLOY_TOKEN : jeton fine-grained limité au repo sites-infra (Contents: Read and write).

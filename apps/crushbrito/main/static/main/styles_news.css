@@ -1,0 +1,132 @@
+
+*{
+    font-family: 'Gabarito', sans-serif;
+}
+body{
+    background:#000000 ;
+    color: black;
+    font-family: 'Gabarito', sans-serif;
+
+}
+
+
+
+
+
+div.news{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 15px;
+    border: 1px solid white;
+    padding: 4px 6px;
+    margin-top: 8px;
+    width: 530px;
+    background: rgba(128, 128, 128, 0.700);
+    
+}
+
+
+
+form textarea{
+    background: none;
+    border: rgba(255, 255, 255, 0.548) 1px solid;
+    display: block;
+    text-align:center;
+    height: 35px;
+    width:440px;
+    outline: none;
+    color: grey;
+    transition: 0.24s;
+    font-size: 20px;
+    overflow:hidden;
+    border-radius: 25px;
+}
+form textarea:focus{
+    width:450px;
+}
+
+
+
+
+a.ajouter{
+    text-align: center;
+    position: absolute;
+    right: 0%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    padding: 4px 6px;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+a.ajouter:hover{
+    margin-top: -5px;    
+
+}
+
+
+font.message span{
+    color: rgb(255, 255, 255);
+}
+
+font.message{
+    word-wrap: break-word;
+    display: inline;
+    
+}
+
+a.delete{
+    display: inline;
+    color: rgb(165, 72, 72);
+    text-decoration: none;
+}
+
+a.delete:hover{
+    color:rgb(255, 0, 0);
+}
+
+form.news_ajout{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}
+
+
+
+button.valider{
+    background :rgba(245, 245, 220, 0);    
+    border: none;
+    
+}
+
+
+ 
+
+@media only screen and (max-width: 570px){
+
+    div.news{
+        padding: 4px 6px;
+        margin-top: 8px;
+        width: 300px;
+    }
+    
+    
+    .message{
+        z-index: 3;
+        resize : both;
+        min-width : 150px;
+        min-height : 50px;
+        max-width : 250px;
+        max-height : 50px;
+    }
+
+    span.send{
+        color: black;
+    }
+
+    
+    
+}

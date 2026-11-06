@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" href="img/glace-4.webp" />
+    <link rel="preload" as="image" href="img/glace-4.png" />
+    <script defer src="script.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="mobile-message">
+      <div class="mobile-content">
+        <h1>Désolé</h1>
+        <p>Ce site n'est pas optimisé pour les petits écrans.</p>
+        <p>Veuillez utiliser un écran d'au moins 1180px de largeur pour une meilleure expérience.</p>
+        <p class="subtitle">Merci de votre compréhension</p>
+      </div>
+    </div>
+    <div class="container">
+
+      <div class="loading">
+        <div class="load">
+          <div class="load--0 load-1"></div>
+          <div class="load--0 load-2"></div>
+          <div class="load--0 load-3"></div>
+          <div class="load--0 load-4"></div>
+          <div class="load--0 load-5"></div>
+          <div class="load--0 load-6"></div>
+          <div class="load--0 load-7"></div>
+
+        </div>
+      </div>
+      <div class="content__1 hidden">
+        <header class="header">
+          <div class="logo">Creamy</div>
+          <div class="menu">
+            <a class="menu__lien">about</a class="menu__lien">
+            <a class="menu__lien">Product</a class="menu__lien">
+            <a class="menu__lien">Moods</a class="menu__lien">
+            <a class="menu__lien">Flavors</a class="menu__lien">
+            <a class="menu__lien">Ingredients</a class="menu__lien">
+          </div>
+
+          <div class="profil">
+            <picture>
+              <source type="image/webp" srcset="img/user.webp" />
+              <img class="me" src="img/user.jpg" alt="" loading="lazy" decoding="async" />
+            </picture>
+            <span class="deroulant__"></span>
+          </div>
+        </header>
+
+        <div class="title">
+            <h1 class="title__1">
+              <span>G</span>
+              <span>r</span>
+              <span>a</span>
+              <span>b</span>
+              <span style="opacity:0;font-size: 3.5rem;">o</span>
+              <span>t</span>
+              <span>h</span>
+              <span>e</span>
+              <br>
+              <span>b</span>
+              <span>e</span>
+              <span>s</span>
+              <span>t</span>
+              <span style="opacity: 0;font-size: 3.5rem;">o</span>
+              <span>i</span>
+              <span>c</span>
+              <span>e</span>
+              <br>
+              <span>c</span>
+              <span>r</span>
+              <span>e</span>
+              <span>a</span>
+              <span>m</span>
+              <span>.</span>
+            </h1>
+
+
+
+            <p class="title__description">We ditched the dairy we cut tge sugar infused mood-boosting adaptogens</p>
+            <button class="title__buy"><p>Shop flavors</p></button>
+        </div>
+
+        <div class="presentation">
+            <picture class="glace-picture">
+              <source type="image/webp" srcset="img/glace-4.webp">
+              <img class="glace" src="img/glace-4.png" alt="" loading="eager" fetchpriority="high" decoding="async">
+            </picture>
+
+        </div>
+        
+
+        <div class="place__btn">
+            <button class="choice__btn place__btn-1" data-src="1" data-color="vanilla">Vanilla </button>
+            <button class="choice__btn place__btn-2" data-src="2" data-color="cookis">cookis</button>
+            <button class="choice__btn place__btn-3" data-src="3" data-color="mango">Mango</button>
+            <button class="choice__btn place__btn-4 win" data-src="4" data-color="strawberry">Strawberry</button>
+            <button class="choice__btn place__btn-5" data-src="5" data-color="choco">Choco</button>
+            <button class="choice__btn place__btn-6" data-src="6" data-color="lime">Lime</button>
+            <button class="choice__btn place__btn-7" data-src="7" data-color="banana">Banana</button>
+        </div>
+
+        <div class="content__2">
+          <div class="newsletter">
+            <h1 class="header-1">Notre Newsletter</h1>
+            <p>Envie de plus de MMmhhhhhh?</p>
+            <form class="form_" action="#" >
+              <input type="email" id="email" name="email"class="formulaire" placeholder="example@gmail.com" required>
+              <button class="search__button">
+                <svg class="search__icon">
+                  <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+                </svg>
+              </button>
+            </form>
+          </div>
+        
+          <div class="post">
+          <div class="poster">
+            <picture class="poster-picture">
+              <source type="image/webp" srcset="img/glace-4.webp">
+              <img class="poster__glace" src="img/glace-4.png" alt="" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+
+        <div class="explication">
+          <p class="explication__text">Tout le monde aime la <br> <span class="text__glace">glace</span> mais personne n'aime <br> payer le prix de la qualité</p>
+        </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+$color-secondary: rgb(255, 211, 66);
+$color-primary: rgb(58, 35, 0);
+
+$color-vanilla: rgb(220, 241, 212);
+$color-cookis: rgb(178, 251, 244);
+$color-mango: rgb(207, 167, 233);
+$color-strawberry: rgb(232, 154, 154);
+$color-choco: rgb(251, 229, 178);
+$color-lime: rgb(210, 251, 178);
+$color-banana: rgb(244, 251, 178);
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  color: black;
+  font-weight: 300;
+  line-height: 1.1;
+  z-index: 2;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: cyan;
+  padding: 10rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}

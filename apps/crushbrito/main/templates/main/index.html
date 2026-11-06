@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/styles_index.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'main/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'main/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'main/favicon/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'main/favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+<div class="carre"></div>
+
+
+
+
+<div class="animation-container">
+    <div>Welcome to</div>
+    <div>
+        <span>crush brito</span>
+    </div>
+</div>
+
+
+
+
+    {% if user.is_authenticated %}
+        
+        <a class="logout" href="{% url 'logout' %}"><span class="material-symbols-outlined">logout</span></a>
+        <a class="profile" href="{% url 'all_users' %}"><span class="material-symbols-outlined">groups</span></a>
+
+    {% else %}
+        <a class="signup" href="{% url 'signup' %}">S'inscrire</a>
+        <br>
+        <a class="login" href="{% url 'login' %}">Se connecter</a>
+    {% endif %}
+
+    <table>
+        <tr>
+            <td>
+        <div class="presentation">
+            <p class="presentation">Nous sommes fiers de vous présenter le site de Crush Brito.
+                Il vous permet de chercher et trouver des
+                  personnes que vous avez croisé au lycée beaucoup plus facilement. 
+                  Si, vous cherchez une personne,
+                   elle sera sûrement là. Alors, allez-y, inscrivez-vous et explorez.
+            </p>
+        </div>
+    </td>
+    </tr>
+    </table>
+    </div>
+    
+</body>
+</html>

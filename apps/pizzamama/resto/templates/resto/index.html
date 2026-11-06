@@ -1,0 +1,103 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'resto/styles.css' %}">
+    <title>Pizza Mama</title>
+</head>
+<body>
+    <div class="centered">
+        <img style="max-width: 350px;" src="{% static 'resto/images/main_logo.png'%}">
+    </div>
+    
+
+
+    <div class="menu">
+        <ul>
+    
+            <li>
+                <a href="#">Aperetif</a>
+                <ul>
+                    <li><a href="sale">Salé </a></li>
+                    <li><a href="sucre">Sucré</a></li>
+                  </ul>
+            </li>
+    
+    
+            <li>
+                <a href="#">Boisson</a>
+                <ul>
+                    <li><a href="alcool">Alcool </a></li>
+                    <li><a  href="non_alcool"><span style="margin-left: -10px;">Non </span><span style="margin-left: 12px;">alcoolisées</span></a></li>
+                    <li><a href="soda">Soda </a></li>
+                    <li><a href="cafe">Café </a></li>
+                    <li><a href="the">Thé </a></li>
+                  </ul>
+            </li>
+    
+    
+          <li>
+            <a href="#">Plats</a>
+            <ul style="padding-left: 5px;">
+                <li><a href="pizza">Pizzas </a></li>
+                <li><a href="pate">Pates </a></li>
+                <li><a href="lasagne">Lasagnes </a></li>
+                <li><a href="salade">Salade </a></li>
+                <li><a href="charcuterie">Charcuterie </a></li>
+              </ul>
+        </li>
+    
+    
+        <li>
+            <a href="#">Désert</a>
+            <ul>
+                <li><a href="d_sucre">Sucré </a></li>
+                <li><a href="d_sale">Salé </a></li>
+              </ul>
+        </li>
+    
+    
+          <li>
+            <a href="#">Contact</a>
+            <ul>
+                <li><a style="text-align: center; margin-left: -10px; margin-right: 0px;" href="tel:+33766083521">07 66 08 35 21 </a></li>
+                <li><a href="mailto:hug000meuriel@gmail.com">email </a></li>
+                <li><a target="_blank" href="https://www.facebook.com/hugo.meuriel.9">Facebook </a></li>
+                <li><a target="_blank"href="https://www.instagram.com/huugg000/">Instagram </a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      
+      {% if user.cart %}
+      <a class="cadis" href="{% url 'cart' %}"><img src="{% static 'resto/images/cadis.png' %}" alt="" style="width: 50px;"></a>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+      <div class="name">
+        <p class="name">{{ user.username}}</p>
+      </div>
+
+          <a class=" logout " href="{% url 'logout' %} ">déconnexion</a>
+      {% else %}
+
+      <div class="signup">
+          <a class= signup href="{% url 'signup' %}">S'inscrire</a>
+      </div>
+      <div class="login">
+          <a class= login href="{% url 'login' %}">Connexion</a>
+      </div>
+      {% endif %}
+  
+
+
+
+      
+
+
+
+</body>
+</html>

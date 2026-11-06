@@ -1,0 +1,169 @@
+
+
+*{
+    font-family: 'Gabarito', sans-serif;
+}
+
+body{
+    background:#000000 ;
+    color: black;
+    font-family: 'Gabarito', sans-serif;
+}
+  
+
+.image-list {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style-type: none;
+    padding: 0px;
+}
+
+.image-item {    
+
+    margin-bottom: 20px; /* Espace vertical entre chaque image */
+    position: relative;
+    width: 300px;
+
+}
+
+.container {
+
+    width: 300px;
+    height: 500px;
+    padding-bottom: 20px;
+
+}
+
+
+.info_{
+    width: 270px;
+    position: absolute;
+    top: 48.5%;
+    left: 50%;
+    transform: translate(-50%, -50.5%);
+    padding: 20px 0px;    
+    display:block;
+    background: rgba(255, 255, 255, 0.808);
+    border-radius:15px; 
+    border-top: rgba(255, 255, 255, 0.548) 1px solid;
+    border-left: rgba(255, 255, 255, 0.548) 1px solid;
+    box-shadow: 0px 10px 20px 0px rgb(0,0,0,0.15);
+    backdrop-filter:blur(5px);
+}
+
+img.image{
+    max-width: 230px; /* L'image ne dépassera pas la largeur du conteneur */
+    margin: auto;
+    display: block;
+    border-radius:15px;
+    max-height: 280px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: rgba(255, 255, 255, 0.548) 1px solid;
+    border-left: rgba(255, 255, 255, 0.548) 1px solid; 
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+
+    
+}
+
+.info{
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    min-height: 120px;
+    border-radius:15px;
+    border-top: rgba(255, 255, 255, 0.548) 1px solid;
+    border-left: rgba(255, 255, 255, 0.548) 1px solid;
+    box-shadow: 0px 10px 20px 0px rgb(0,0,0,0.15);
+
+
+
+}
+
+h2{
+    text-align: center;
+    color: black;
+
+}
+
+p.detail{
+    left: 102%;
+    top: 40%;
+    transform: translate(2%, -60%);
+    margin-left: 15px;
+    color: var(--couleur_back);
+    color: black;
+
+}
+
+a.insta{
+    color: black;
+    transition: 0.25s;
+
+}
+
+a.insta:hover{
+    color: rgb(251, 251, 251);
+}
+
+
+
+a.conversation{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+
+@media only screen and (max-width: 570px){
+
+    .container {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 250px;
+        height: 400px;
+        padding-bottom: 25px;
+        padding-top: 15px;
+    }
+    
+    
+    .info_{
+        width: 220px;
+
+    }
+    
+    img.image{
+        max-width: 140px;
+        max-height: 190px;
+
+        
+    }
+    
+    .info{
+        width: 180px;
+    
+    }
+    
+    h2{
+        font-size: 20px;
+    }
+    
+    p.detail{
+        font-size: 13px;
+    }
+    
+    a.insta{
+        color: var(--couleur_back);
+        transition: 0.25s;
+    }
+    
+    a.insta:hover{
+        color: rgb(251, 251, 251);
+    }
+    
+}

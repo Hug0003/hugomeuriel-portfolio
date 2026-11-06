@@ -1,0 +1,261 @@
+
+
+*{
+    font-family: 'Gabarito', sans-serif;
+}
+body{
+    background:#000000 ;
+    color: black;
+    font-family: 'Gabarito', sans-serif;
+
+}
+
+
+
+
+
+a.delete_{
+    display: none;
+    visibility: hidden;
+
+}
+
+
+
+div.ecrire{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+
+}
+form textarea{
+    background: none;
+    border: rgba(255, 255, 255, 0.548) 2px solid;
+    display: block;
+    text-align:center;
+    height: 35px;
+    width:300px;
+    outline: none;
+    color: grey;
+    transition: 0.24s;
+    font-size: 20px;
+    overflow:hidden;
+    border-radius: 25px;
+}
+form textarea:focus{
+    width: 310px;
+}
+
+
+div.nom{
+    color: white;
+}
+
+div.message_user_{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 15px;
+    padding: 4px 6px;
+    margin-top: 0px;
+    width: 530px; 
+    
+}
+
+div.message_user{
+    position: relative;
+    left: 110%;
+    transform: translateX(-50%);
+    background: rgb(128, 128, 128, 0.700);
+    border-radius: 15px;
+
+
+    
+    
+}
+
+div.message_autre{
+    position: relative;
+    left: -10%;
+    transform: translateX(-50%);
+    background: rgb(128, 128, 128, 0.700);
+    border-radius: 15px;
+
+
+ 
+
+}
+
+span.nom{
+    color: white;
+}
+
+p.message_user{
+    word-wrap: break-word;
+    background: none;
+    padding: 4px 8px;
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+    border-top: rgba(255, 255, 255, 0.548) 1px solid;
+    border-left: rgba(255, 255, 255, 0.548) 1px solid;  
+}
+
+p.message_autre{
+    word-wrap: break-word;
+    background: none;
+    padding: 4px 8px;
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+    border-top: rgba(255, 255, 255, 0.548) 1px solid;
+    border-right: rgba(255, 255, 255, 0.548) 1px solid;  
+
+
+}
+
+
+
+
+
+button.valider{
+    background :rgba(245, 245, 220, 0);    
+    border: none;
+}
+
+@media only screen and (max-width: 1250px){
+
+
+    .message{
+        margin-top: -100px;
+        resize : both;
+        min-width : 250px;
+        min-height : 30px;
+        max-width : 250px;
+        max-height : 30px;
+        
+    
+    }
+    
+    div.message_user_{
+
+        padding: 4px 6px;
+        margin-top: 8px;
+        width: 400px;
+        
+        
+    }
+    
+    div.message_user{
+        position: relative;
+        left: 100%;
+        transform: translateX(-50%);
+    }
+    
+    div.message_autre{
+        position: relative;
+        left: 0%;
+        transform: translateX(-50%);
+    }
+
+    
+}
+
+
+@media only screen and (max-width: 810px){
+
+
+    .message{
+        margin-top: -100px;
+        resize : both;
+        min-width : 250px;
+        min-height : 30px;
+        max-width : 250px;
+        max-height : 30px;
+        
+    
+    }
+    
+    div.message_user_{
+
+        padding: 4px 6px;
+        margin-top: 8px;
+        width: 400px;
+        
+        
+    }
+    
+    div.message_user{
+        position: relative;
+        left: 70%;
+        transform: translateX(-50%);
+    }
+    
+    div.message_autre{
+        position: relative;
+        left: 30%;
+        transform: translateX(-50%);
+    }
+
+    
+}
+@media only screen and (max-width: 600px){
+
+
+    .message{
+        margin-top: -100px;
+        resize : both;
+        min-width : 250px;
+        min-height : 30px;
+        max-width : 250px;
+        max-height : 30px;
+        
+    
+    }
+    
+    div.message_user_{
+
+        padding: 4px 6px;
+        margin-top: 8px;
+        width: 350px;
+        
+        
+    }
+    
+    div.message_user{
+        position: relative;
+        left: 70%;
+        transform: translateX(-50%);
+    }
+    
+    div.message_autre{
+        position: relative;
+        left: 30%;
+        transform: translateX(-50%);
+    }
+
+    
+}
+
+@media only screen and (max-width: 500px){
+
+
+    .message{
+        margin-top: -100px;
+        resize : both;
+        min-width : 250px;
+        min-height : 30px;
+        max-width : 250px;
+        max-height : 30px;
+        
+    
+    }
+    div.message_user_{
+        width: 250px;
+         
+    }
+    
+
+    
+}
+

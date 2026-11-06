@@ -1,0 +1,185 @@
+# Nginx du conteneur unique hugomeuriel.fr : portfolio, projets statiques, relais météo et
+# applis Django (gunicorn sur 127.0.0.1:8001 et 8002, lancés par start.sh).
+# Modèle rendu au démarrage par start.sh (envsubst) : ${OWM_API_KEY}, ${OPENCAGE_API_KEY}
+# et ${NGINX_RESOLVER} sont remplacés ; les variables Nginx ($uri…) restent intactes.
+
+worker_processes auto;
+pid /tmp/nginx.pid;
+error_log /dev/stderr warn;
+
+events {
+    worker_connections 512;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+    access_log /dev/stdout;
+    sendfile on;
+    server_tokens off;
+    client_max_body_size 5m;
+
+    # Conteneur sans root, système de fichiers en lecture seule : tout le temporaire va dans /tmp.
+    client_body_temp_path /tmp/nginx-body;
+    proxy_temp_path       /tmp/nginx-proxy;
+    fastcgi_temp_path     /tmp/nginx-fastcgi;
+    uwsgi_temp_path       /tmp/nginx-uwsgi;
+    scgi_temp_path        /tmp/nginx-scgi;
+
+    # Vraie IP du visiteur (transmise par l'Apache de 192.168.11.131), pour la limitation de débit.
+    set_real_ip_from 192.168.11.131;
+    set_real_ip_from 172.16.0.0/12;
+    real_ip_header X-Forwarded-For;
+    real_ip_recursive on;
+
+    limit_req_zone $binary_remote_addr zone=auth:10m rate=10r/m;
+    limit_req_zone $binary_remote_addr zone=meteo_api:10m rate=30r/m;
+    limit_req_status 429;
+
+    # Cache navigateur : 7 jours pour les fichiers statiques, revalidation pour les pages.
+    map $uri $cache_control {
+        ~*\.(css|js|webp|png|jpe?g|gif|svg|ico|woff2?|ttf|mp4|webm)$ "public, max-age=604800";
+        default "no-cache";
+    }
+
+    server {
+        listen 8080 default_server;
+        server_name _;
+        root /srv/www;
+        index index.html;
+        # Redirections relatives : ni http:// ni port interne (le HTTPS est géré par Apache).
+        absolute_redirect off;
+
+        include /etc/nginx/headers/portfolio.conf;
+
+        # Fichiers cachés et fichiers de travail : jamais servis.
+        location ~ /\. {
+            return 404;
+        }
+        location ~* \.(py|md|scss|sass|map|tar\.gz|zip|sh|lock|template|env)$ {
+            return 404;
+        }
+
+        # ---------- Portfolio ----------
+        location / {
+            limit_except GET HEAD { deny all; }
+            try_files $uri $uri/ =404;
+        }
+
+        # ---------- Projets statiques (chacun avec sa propre CSP) ----------
+        location /projets/guessmynumber/ {
+            include /etc/nginx/headers/guessmynumber.conf;
+            limit_except GET HEAD { deny all; }
+            try_files $uri $uri/ =404;
+        }
+        location /projets/icecream/ {
+            include /etc/nginx/headers/icecream.conf;
+            limit_except GET HEAD { deny all; }
+            try_files $uri $uri/ =404;
+        }
+        location /projets/natours/ {
+            include /etc/nginx/headers/natours.conf;
+            limit_except GET HEAD { deny all; }
+            try_files $uri $uri/ =404;
+        }
+        location /projets/nexter/ {
+            include /etc/nginx/headers/nexter.conf;
+            limit_except GET HEAD { deny all; }
+            try_files $uri $uri/ =404;
+        }
+        location /projets/trillo/ {
+            include /etc/nginx/headers/trillo.conf;
+            limit_except GET HEAD { deny all; }
+            try_files $uri $uri/ =404;
+        }
+        location /projets/robot/ {
+            include /etc/nginx/headers/robot.conf;
+            limit_except GET HEAD { deny all; }
+            try_files $uri $uri/ =404;
+        }
+        location /projets/sunorcloud/ {
+            include /etc/nginx/headers/sunorcloud.conf;
+            limit_except GET HEAD { deny all; }
+            try_files $uri $uri/ =404;
+        }
+
+        # ---------- Météo : relais vers les API, les clés restent sur le serveur ----------
+        location = /projets/sunorcloud/api/geocode {
+            include /etc/nginx/headers/sunorcloud.conf;
+            include /etc/nginx/meteo-proxy.conf;
+            if ($arg_q = "") {
+                return 400;
+            }
+            proxy_set_header Host api.opencagedata.com;
+            proxy_pass https://api.opencagedata.com/geocode/v1/json?q=$arg_q&limit=1&no_annotations=1&key=${OPENCAGE_API_KEY};
+        }
+        location = /projets/sunorcloud/api/weather {
+            include /etc/nginx/headers/sunorcloud.conf;
+            include /etc/nginx/meteo-proxy.conf;
+            if ($arg_lat !~ "^-?[0-9]{1,3}(\.[0-9]{1,10})?$") {
+                return 400;
+            }
+            if ($arg_lon !~ "^-?[0-9]{1,3}(\.[0-9]{1,10})?$") {
+                return 400;
+            }
+            proxy_set_header Host api.openweathermap.org;
+            proxy_pass https://api.openweathermap.org/data/2.5/weather?lat=$arg_lat&lon=$arg_lon&appid=${OWM_API_KEY};
+        }
+
+        # ---------- Django : crushbrito (gunicorn 127.0.0.1:8001) ----------
+        location = /projets/crushbrito {
+            return 301 /projets/crushbrito/;
+        }
+        location ^~ /projets/crushbrito/static/ {
+            include /etc/nginx/headers/django.conf;
+            alias /srv/static/crushbrito/;
+        }
+        location ^~ /projets/crushbrito/media/ {
+            include /etc/nginx/headers/media.conf;
+            alias /data/crushbrito/media/;
+            location ~* \.(html?|svg|xml|js|php|py|sh)$ {
+                return 403;
+            }
+        }
+        location ^~ /projets/crushbrito/ {
+            include /etc/nginx/headers/django.conf;
+            # Connexion, inscription et connexion à l'admin : 10 requêtes par minute et par visiteur.
+            location ~ ^/projets/crushbrito/((login|signup)/|.*/login/$) {
+                limit_req zone=auth burst=5 nodelay;
+                include /etc/nginx/django-proxy.conf;
+                proxy_pass http://127.0.0.1:8001;
+            }
+            include /etc/nginx/django-proxy.conf;
+            proxy_pass http://127.0.0.1:8001;
+        }
+
+        # ---------- Django : pizzamama (gunicorn 127.0.0.1:8002) ----------
+        location = /projets/pizzamama {
+            return 301 /projets/pizzamama/;
+        }
+        location ^~ /projets/pizzamama/static/ {
+            include /etc/nginx/headers/django.conf;
+            alias /srv/static/pizzamama/;
+        }
+        location ^~ /projets/pizzamama/media/ {
+            include /etc/nginx/headers/media.conf;
+            alias /data/pizzamama/media/;
+            location ~* \.(html?|svg|xml|js|php|py|sh)$ {
+                return 403;
+            }
+        }
+        location ^~ /projets/pizzamama/ {
+            include /etc/nginx/headers/django.conf;
+            location ~ ^/projets/pizzamama/((login|signup)/|.*/login/$) {
+                limit_req zone=auth burst=5 nodelay;
+                include /etc/nginx/django-proxy.conf;
+                proxy_pass http://127.0.0.1:8002;
+            }
+            include /etc/nginx/django-proxy.conf;
+            proxy_pass http://127.0.0.1:8002;
+        }
+    }
+
+    # Résolveur DNS (lu dans /etc/resolv.conf au démarrage), pour proxy_pass avec variables.
+    resolver ${NGINX_RESOLVER} valid=300s ipv6=off;
+}

@@ -1,0 +1,32 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/styles.css' %}">
+    <title>login</title>
+</head>
+<body>
+<form  method="POST" name="form" onsubmit="return validated()">
+    {% csrf_token %}
+    <a class="retour" href="{% url 'index' %}">X</a>
+        <h1>sign up</h1>
+        {% for error in errors %}<p class="erreur" style="color: #c00;">{{ error }}</p>{% endfor %}
+        <input autocomplete="off" type="text" name="username" placeholder="prenom" required>
+        <input autocomplete="off" style="border-bottom-color: black; border-left-color:black  ;" type="text" name="nom" placeholder="nom" required>
+        <input autocomplete="off" type="text" name="telephone" placeholder="télephone" required>
+        <input autocomplete="off" style="border-bottom-color: black; border-left-color:black  ;" type="text" name="email" placeholder="email" required>
+        <input autocomplete="off" type="password" name="password" placeholder="mot de passe" required>
+        <button type="submit" name="valide">valide</button>
+        <button type="reset" name="annuler">annuler</button>
+        <divc class="login">
+            <p class="login">vous avez deja un compte :<a class="login" href="{% url 'login' %}">login</a></p>
+        </div>
+    </form>
+
+    <script src="{% static 'accounts/valid.js' %}"></script>
+
+
+
+</body>
+</html>

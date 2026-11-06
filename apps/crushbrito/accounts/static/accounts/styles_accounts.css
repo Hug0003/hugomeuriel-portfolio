@@ -1,0 +1,418 @@
+
+
+*{
+    font-family: 'Gabarito', sans-serif;
+}
+body{
+    overflow-y: hidden; /* Masquer le défilement vertical */
+    overflow-x: hidden;
+    background:#000000 ;
+    color: black;
+    font-family: 'Gabarito', sans-serif;
+
+}
+
+div.carre{
+    z-index: -3;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200%;
+    background: white
+ }
+
+  
+p.erreur{
+    position: absolute;
+    color: red;
+    left: 73%;
+    margin-top: -510px;
+    transform: translate(-23%);
+    
+}
+
+
+
+p.erreur_{  
+    position: absolute;  
+    color: red;
+    left: 75%;
+    margin-top: -480px;
+    transform: translate(-25%);
+    max-width: 140px;
+    
+}
+
+
+
+
+div.signup{
+    width: 500px;
+    height: 620px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.801);
+    border-top: rgba(255, 255, 255, 0.548) 1px solid;
+    border-left: rgba(255, 255, 255, 0.548) 1px solid;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+
+}
+
+
+
+h1{
+    text-align: center;
+    text-decoration: underline;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    
+}
+
+
+label{
+    font-weight: bold;
+    margin-left: 50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+form input[type="text"],form input[type="password"], form textarea{
+    background: none;
+    border: 1px solid rgb(0, 0, 0);
+    display: block;
+    margin:  -15px auto ;
+    text-align:center;
+    height: 25px;
+    width: 140px;
+    outline: none;
+    color: black;
+    transition: 0.24s;
+    font-size: 20px;
+    overflow:hidden;
+    border-radius: 15px;
+
+    
+
+}
+
+
+form input[type="text"]:focus,form input[type="password"]:focus, form textarea:focus{
+    width: 150px;
+}
+
+
+form input[type="file"]{
+    margin: 8px 40px;
+
+}
+
+
+button.submit{
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: 0.25s;
+    position: relative;
+    left: 50%;
+    top: 90%;
+    background: rgb(0, 0, 0);
+    color: white;
+    transform: translate(-50%, -10%);
+    border: none;
+    width: 180px;
+}
+
+button.submit:hover{
+    background-color: #ffffff00;
+    color: rgb(0, 0, 0);
+}
+p.login_lien{
+    position: absolute;
+    top:95%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+
+}
+
+a.login_lien{
+    color: black;
+    transition: 0.25s;
+
+
+}
+a.login_lien:hover{
+    color: grey;
+}
+
+
+
+
+div.login{
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.801);
+    border-top: rgba(255, 255, 255, 0.548) 1px solid;
+    border-left: rgba(255, 255, 255, 0.548) 1px solid;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+
+}
+
+button.submit_{
+    background:rgb(0, 0, 0);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: 0.25s;
+    position: absolute;
+    left: 50%;
+    top:73%;
+    transform: translate(-50%, -50%);
+    border: none;
+    width: 180px;
+}
+button.submit_:hover{
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(0, 0, 0);
+}
+
+p.signup_lien{    
+    position: absolute;
+    top:55%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+a.signup_lien{
+    color: rgb(0, 0, 0) ;
+    transition: 0.25s;
+}
+
+a.signup_lien:hover{
+    color: grey;
+}
+
+
+
+@media only screen and (min-width: 520px){
+    p.erreur{
+        left: 70%;
+        margin-top: -410px;
+        transform: translate(-25%);
+        font-size: 15px;
+    }
+    
+    p.erreur_{  
+        left: 73%;
+        margin-top: -330px;
+        transform: translate(-25%);
+        font-size: 12px;
+    }
+
+    div.signup{
+        width: 490px;
+        height: 500px;
+    }
+    
+    h1{
+        font-size: 25px;        
+    }
+        
+    label{
+        font-weight: none;
+        font-size: 15px;
+        margin-left: 45px;
+    }
+
+    form input[type="text"],form input[type="password"], form textarea{
+        height: 20px;
+        width: 120px;
+        font-size: 15px;
+    }
+
+    form input[type="text"]:focus,form input[type="password"]:focus, form textarea:focus{
+        width: 130px;
+    }
+
+    button.submit{
+        padding: 8px 16px;
+    }
+
+    p.login_lien{
+        margin-top: 10px;
+        margin-left: 140px;
+    }
+
+
+
+
+    div.login{
+        width: 500px;
+        height: 300px;
+
+
+    }
+
+    button.submit_{
+        padding: 8px 16px;
+        margin-top:-40px ;
+
+    }
+
+    p.signup_lien{    
+        margin-top: 70px;
+        margin-left: 130px;
+    }
+}
+
+@media only screen and (max-width: 520px){
+    p.erreur{
+        left: 75%;
+        margin-top: -410px;
+        transform: translate(-25%);
+        font-size: 10px;  
+    }
+    
+    p.erreur_{  
+        left: 75%;
+        margin-top: -330px;
+        transform: translate(-25%);
+        font-size: 10px;
+    }
+
+    div.signup{
+        width: 390px;
+        height: 500px;
+    }
+    
+    h1{
+        font-size: 20px;        
+    }
+        
+    label{
+        font-weight: none;
+        font-size: 13px;
+        margin-left: 15px;
+    }
+
+    form input[type="text"],form input[type="password"], form textarea{
+        height: 20px;
+        width: 110px;
+        font-size: 15px;
+    }
+
+    form input[type="text"]:focus,form input[type="password"]:focus, form textarea:focus{
+        width: 120px;
+    }
+
+    button.submit{
+        padding: 8px 16px;
+    }
+
+    p.login_lien{
+        text-align: center;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+
+
+
+
+
+    div.login{
+        width: 390px;
+        height: 300px;
+    }
+
+    button.submit_{
+        padding: 8px 16px;
+        margin-top:-40px ;
+    }
+
+    p.signup_lien{    
+        text-align: center;
+        margin-top: 70px;
+        font-size: 15px;
+    }
+}
+
+
+@media only screen and (max-width: 400px){
+    p.erreur{
+        left: 80%;
+        margin-top: -430px;
+        transform: translate(-25%);
+        font-size: 10px;
+    }
+    
+    p.erreur_{  
+
+        left: 80%;
+        margin-top: -365px;
+        transform: translate(-25%);
+        font-size: 10px; 
+    }
+
+    div.signup{
+        width: 300px;
+        height: 500px;
+    }
+    
+    h1{
+        font-size: 20px;        
+    }
+    
+    label{
+        font-weight: none;
+        font-size: 11.5px;
+        margin-left: 5px;
+    }
+
+    form input[type="text"],form input[type="password"], form textarea{
+        height: 20px;
+        width: 110px;
+        font-size: 15px;
+    }
+
+    form input[type="text"]:focus,form input[type="password"]:focus, form textarea:focus{
+        width: 120px;
+    }
+
+    button.submit{
+        padding: 8px 16px;
+    }
+
+    p.login_lien{
+        text-align: center;
+        margin-top: 10px;
+        font-size: 12px;
+        }
+
+
+
+
+
+    div.login{
+        width: 300px;
+        height: 300px;
+    }
+
+    button.submit_{
+        padding: 8px 16px;
+        margin-top:-40px ;
+    }
+
+    p.signup_lien{    
+        text-align: center;
+        margin-top: 70px;
+        font-size: 12px;    }
+}

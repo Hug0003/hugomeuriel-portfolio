@@ -1,0 +1,34 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'resto/styles_.css' %}">
+
+</head>
+<body>
+    <a href="{% url 'index' %}"><img id="small_logo" src="{% static 'resto/images/small_logo.png' %}"></a>
+    <div class="menu_title">
+        <h1>Les non alcools</h1>
+    </div>
+
+    {% block content %}
+    
+    {% for product in products %}
+        {% if product.type == "non_alcool" %}
+        <div class="plat_">
+            <a class="name_" href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>
+            <a  href="{{ product.get_absolute_url }}"><img class="image_" src="{{ product.thumbnail.url }}" alt="{{product.name}}" style="max-width: 150px;"></a>
+        </div>
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock %}
+    
+</body>
+</html>
+

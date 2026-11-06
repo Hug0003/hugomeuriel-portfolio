@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'resto/styles_.css' %}">
+
+</head>
+<body>
+
+    
+    <a href="javascript:history.go(-1)>Retour"><img id="small_logo" src="{% static 'resto/images/small_logo.png' %}"></a>
+
+
+    {% block content %}
+    <div class="menu_list">
+        <div class="menu_list_item">
+
+            <div class="image">
+                <h2 class="menu_list_title">{{ product.name }}</h2>
+                <h3 class="menu_list_prix">{{ product.price}}€</h3>
+                {% if user.is_authenticated %}
+                <a class="ajouter" href="{% url 'add-to-cart' product.slug %}">ajouter article au panier</a>
+                {% endif %}
+                <img class="image" src="{{ product.thumbnail.url }}" alt="{{product.name}}" style="max-width: 120px;">
+                
+                <p class="menu_list_ingredients">{{ product.ingredients }}</p>
+                {% if product.vegetarienne %}
+                <p class="menu_list_vegetarienne">vegetarienne</p>
+                {% else %}
+                    <p class="menu_list_vegetarienne">pas vegetarienne</p>
+                {% endif %}
+                {% if user.cart %}
+                <a class="cadis" href="{% url 'cart' %}"><img src="{% static 'resto/images/cadis.png' %}" alt="" style="width: 50px;"></a>
+                {% endif %}
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+</body>
+</html>

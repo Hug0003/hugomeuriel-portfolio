@@ -9,3 +9,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+  # Django, gunicorn et Pillow des applis crushbrito et pizzamama
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly

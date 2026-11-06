@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" integrity="sha384-42kyIPf7HDYLkGffmxDhSx/3Z/53wGBs3nD6wEFxsbeDc7rMO6mkYbkAcpRsnMU2" crossorigin="anonymous" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@3.0.0-beta.6/dist/aos.css" integrity="sha384-6oNXtl81GMcKAnWPPXinWlPskKUQ0NGG1/XeyMfC5RgCJKPc03w0rHVt1jyoJLf0" crossorigin="anonymous">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.82/build/spline-viewer.js"></script>
+</head>
+<body>
+    <main>
+        <!-- Gradient image -->
+        <img class="gradient-bg" src="assets/gradient.png" alt="gradient">
+        
+        <!-- Blur Effect -->
+        <div class="blur-effect"></div>
+        
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
+                Deva2
+            </h1>
+            
+            <nav class="nav-desktop">
+                <a href="#" class="nav-link" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
+                    Company
+                </a>
+                <a href="#" class="nav-link" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                    Features
+                </a>
+                <a href="#" class="nav-link" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2000">
+                    Ressources
+                </a>
+                <a href="#" class="nav-link" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2500">
+                    About us
+                </a>
+            </nav>
+            
+            <button class="btn-signin" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="3000">
+                Signin
+            </button>
+            
+            <!-- Mobile Menu button -->
+            <button class="mobile-menu-btn" type="button">
+                <i class='bx bx-menu'></i>
+            </button>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu">
+                <nav class="mobile-nav">
+                    <a href="#" class="mobile-nav-link">Company</a>
+                    <a href="#" class="mobile-nav-link">Features</a>
+                    <a href="#" class="mobile-nav-link">Ressources</a>
+                    <a href="#" class="mobile-nav-link">About us</a>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                <!-- Tag box with gradient border -->
+                <div class="tag-box">
+                    <div class="tag-content">
+                        <i class='bx bx-diamond'></i>
+                        INTRODUCING
+                    </div>
+                </div>
+                
+                <!-- Main Heading -->
+                <h1 class="hero-title">
+                    Hello World
+                </h1>
+                
+                <!-- Description -->
+                <p class="hero-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                
+                <!-- Buttons -->
+                <div class="hero-buttons">
+                    <a href="#" class="btn-secondary">
+                        Documentation
+                        <i class='bx bx-link-external'></i>
+                    </a>
+                    <a href="#" class="btn-primary">
+                        Commencer
+                        <i class='bx bx-link-external'></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 3D Robot -->
+            <div class="spline-container" data-aos="zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0" data-aos-duration="3000">
+                <spline-viewer url="https://prod.spline.design/s5nCvVoYTlcbBZqm/scene.splinecode"></spline-viewer>
+            </div>
+        </section>
+    </main>
+    
+    <script src="https://unpkg.com/aos@3.0.0-beta.6/dist/aos.js" integrity="sha384-ZGo5k5ISlEzWLoXyt+lnvKt9j03Z7GkxXh14zLqVy098XJhcdKHjL8pQYVMI8WiH" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

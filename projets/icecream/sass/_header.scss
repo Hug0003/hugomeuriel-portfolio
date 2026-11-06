@@ -1,0 +1,93 @@
+.header {
+  opacity: 0;
+  width: 80%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+  font-family: "Matemasie", sans-serif;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgb(122, 74, 1);
+  margin: auto;
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  animation: takeplace-header 1s ease 0s forwards;
+}
+.logo {
+  font-size: 3rem;
+}
+.menu {
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+
+  &__lien {
+    transition: all 0.2s;
+    &:hover {
+      color: grey;
+    }
+  }
+
+  & > *:not(:first-child) {
+    margin-left: 3rem;
+  }
+}
+
+.profil {
+  display: flex;
+  align-items: center;
+
+  &:hover ::before {
+    width: 1rem;
+  }
+  &:hover ::after {
+    width: 2rem;
+  }
+}
+
+.me {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-right: 3rem;
+  object-fit: cover;
+}
+
+.deroulant__ {
+  width: 1.5rem;
+  height: 2px;
+  background-color: white;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    background-color: white;
+    height: 2px;
+    display: block;
+    transition: all 0.2s;
+  }
+
+  &::before {
+    width: 2rem;
+    transform: translateY(-7px);
+  }
+  &::after {
+    width: 1rem;
+    transform: translateY(5px);
+  }
+}
+
+@keyframes takeplace-header {
+  0% {
+    opacity: 0;
+    transform: translateY(-20rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,183 @@
+
+body {
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("images/menu_background.jpg") no-repeat center center fixed ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgba(255, 255, 255, 0.908);
+    margin: 0px;
+    font-family: Arial;
+  
+  
+  }
+  
+  #small_logo {
+      margin-top: 25px;
+      margin-left: 35px;
+  }
+  
+  h1 {
+      background-color: #ba5c1ede;
+      display: inline;
+      padding: 8px 22px;
+      border-radius: 3px;
+  }
+  
+div.plat_{
+    margin-top: -60px;
+    margin-left: 15px;
+    width: 200px;
+    padding-bottom: 35px;
+    border-radius: 5px;
+ 
+
+}
+
+a.name_{
+    text-decoration: none;
+    color: white;
+    margin-left: 15px;
+    text-align: center;
+ 
+}
+
+
+
+img.image_{
+    display: block;
+    border-radius: 5px;
+    margin: -15px auto 15px;
+    border: 1px solid rgba(255, 255, 255, 0.534);
+
+
+}
+
+  .menu_title {
+      margin-top: 45px;
+      margin-bottom: 50px;
+  }
+  
+  .menu_list {
+      margin-left: 30px;
+  }
+  
+  .menu_list_item {
+      margin: 30px 0px;
+
+  }
+
+  div.image{
+
+    margin: 0px 0px;
+    padding: 0px 10px 10px;
+    display: inline-block;
+    border-radius: 5px;
+    -webkit-backdrop-filter: blur(15px); /* assure la compatibilité avec safari */
+    backdrop-filter: blur(15px);
+    background-color: rgba(182, 182, 182, 0.2);
+}
+
+  
+  .menu_list_title {
+      font-weight: bold;
+      font-size: 20px;
+      display: inline-block;
+      
+  }
+  
+  img.image{
+    border-radius: 5px;
+    display: block;
+    margin-top: -15px;
+    border:none
+
+  }
+  
+  .menu_list_prix {
+      font-size: 20px;
+      color: #DD7835;
+      display: inline-block;
+      width: 0px;
+      text-align: right;
+  }
+  
+  .menu_list_ingredients {
+      font-size: 14px;
+      color: #c8c8c8e7;
+      margin-top: 0px;
+      margin-bottom: 0;
+      display: block;
+      width: 320px;
+  }
+  
+  p.menu_list_vegetarienne{
+    background-color: #DD7835;
+    color: black;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+
+
+
+a.ajouter{
+    display: inline-block;
+    margin-left: 60px;
+
+    color: #c8c8c8e7;
+    background-color: #DD7835;
+    border-radius: 20px;
+    text-decoration: none;
+    padding: 10px;
+    margin-top: -35px;
+    transition: 0.25s;
+}
+
+a.ajouter:hover{
+    border-radius: 10px;
+    background-color: #a5531d;
+
+}
+
+a.cadis{
+    display: block;
+    padding-bottom: -40px;
+    margin-bottom: -4px;
+    margin-top: -50px;
+    margin-left: 100px;
+}
+
+@media only screen and (max-width: 550px){
+    a.ajouter{
+        font-size: 10px;
+        margin-left: 50px;
+    }
+
+    div.image{
+    width: 325px;
+    margin-left: -20px;
+    }
+
+    .menu_list_title {
+        font-size: 17px;
+        max-width: 90px;
+        
+    }
+
+    .menu_list_prix {
+        font-size: 17px;
+ 
+    }
+
+    .menu_list_ingredients {
+        font-size: 14px;
+        width: 220px;
+    }
+    
+
+}
