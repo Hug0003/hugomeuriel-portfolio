@@ -4,7 +4,7 @@
 #   /srv/static/<appli> fichiers statiques Django, collectés pendant le build
 #   /data               volume : bases SQLite et images envoyées (seul dossier modifiable)
 #   /env                secrets en lecture seule (écrits par le workflow de déploiement)
-FROM python:3.13-slim
+FROM python:3.15-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
